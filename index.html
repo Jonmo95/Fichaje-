@@ -464,8 +464,9 @@ const openEditModal=(dk,idx)=>{
   document.getElementById('edit-modal-sub').textContent=new Date(dk+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   const pSel=document.getElementById('edit-proj');
   pSel.innerHTML=state.projects.map(p=>`<option value="${p.id}"${e.projId===p.id?' selected':''}>${p.name}</option>`).join('');
-  document.getElementById('edit-in').value=e.in?e.in.slice(11,16):'09:00';
-  document.getElementById('edit-out').value=e.out?e.out.slice(11,16):'17:00';
+  const toLocalTime=iso=>{if(!iso)return'';const d=new Date(iso);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');};
+  document.getElementById('edit-in').value=toLocalTime(e.in)||'09:00';
+  document.getElementById('edit-out').value=toLocalTime(e.out)||'17:00';
   document.getElementById('edit-note').value=e.note||'';
   document.getElementById('edit-err').style.display='none';
   updateEditPreview();
