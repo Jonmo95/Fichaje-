@@ -323,8 +323,25 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
   <div class="install-text"><strong>Instalar FICHA+</strong><br>Añádela a tu pantalla de inicio</div>
   <button id="btn-install">⬇</button><button id="btn-dismiss">×</button>
 </div>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script> 
+  const firebaseConfig = {
+  apiKey: "AIzaSyDFvRwWQxP9aHvd87Tr1ojQlTjg4HMk3p0",
+  authDomain: "fichaje-app-fc48d.firebaseapp.com",
+  projectId: "fichaje-app-fc48d",
+  storageBucket: "fichaje-app-fc48d.firebasestorage.app",
+  messagingSenderId: "282128723902",
+  appId: "1:282128723902:web:5a98d14024a8b5cb7cd3ef"
+};
 
-<script>
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Activar servicios
+const auth = firebase.auth();
+const db = firebase.firestore();
 // ════════════════════════════════════════
 //  CONVENIO ECODES 2026
 // ════════════════════════════════════════
