@@ -23,26 +23,27 @@ select option{background:#111}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 #app{position:relative;min-height:100vh}
 #bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 60% 50% at 10% 10%,rgba(20,20,35,.9) 0%,transparent 100%),radial-gradient(ellipse 50% 40% at 90% 90%,rgba(10,25,20,.8) 0%,transparent 100%)}
-header{position:sticky;top:0;z-index:80;padding:calc(14px + env(safe-area-inset-top)) 18px 10px;background:rgba(13,13,13,.95);border-bottom:1px solid #1c1c1c;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.hdr-row{display:flex;justify-content:space-between;align-items:center}
-.logo-wrap{display:flex;align-items:center;gap:9px}
+header{position:sticky;top:0;z-index:80;padding:calc(14px + env(safe-area-inset-top)) 14px 10px;background:rgba(13,13,13,.95);border-bottom:1px solid #1c1c1c;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.hdr-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.logo-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .logo-dot{width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px #ef4444}
 .logo-dot.on{background:#4ade80;box-shadow:0 0 8px #4ade80;animation:pulse 2s infinite}
 .app-title{font-size:13px;font-weight:700;letter-spacing:5px}
-.hdr-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-#clock{font-size:11px;color:#555;letter-spacing:2px;font-variant-numeric:tabular-nums}
-.hdr-btn{background:rgba(255,255,255,.04);border:1px solid #222;border-radius:6px;color:#777;font-size:9px;letter-spacing:1.5px;padding:5px 8px;transition:all .2s;white-space:nowrap}
-.hdr-btn.accent{border-color:#1a3320;color:#4ade80;background:rgba(74,222,128,.06)}
-.hdr-btn.vac{border-color:#1a2535;color:#60a5fa;background:rgba(96,165,250,.06)}
-nav{position:sticky;top:calc(50px + env(safe-area-inset-top));z-index:70;display:flex;background:rgba(13,13,13,.95);border-bottom:1px solid #1c1c1c;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);overflow-x:auto;scrollbar-width:none}
-nav::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:65px;background:none;border:none;border-bottom:2px solid transparent;color:#444;font-size:10px;font-weight:700;letter-spacing:2px;padding:9px 4px 10px;transition:all .2s;white-space:nowrap}
+.hdr-right{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+#clock{font-size:10px;color:#555;letter-spacing:2px;font-variant-numeric:tabular-nums;flex-shrink:0}
+.hdr-btn{background:rgba(255,255,255,.04);border:1px solid #222;border-radius:6px;color:#777;font-size:9px;letter-spacing:1px;padding:5px 7px;transition:all .2s;white-space:nowrap}
+.hdr-btn.green{border-color:#1a3320;color:#4ade80;background:rgba(74,222,128,.06)}
+.hdr-btn.blue{border-color:#1a2535;color:#60a5fa;background:rgba(96,165,250,.06)}
+.hdr-btn.amber{border-color:#2a1f0a;color:#f59e0b;background:rgba(245,158,11,.06)}
+nav{position:sticky;top:calc(50px + env(safe-area-inset-top));z-index:70;display:flex;background:rgba(13,13,13,.95);border-bottom:1px solid #1c1c1c;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.tab{flex:1;background:none;border:none;border-bottom:2px solid transparent;color:#444;font-size:10px;font-weight:700;letter-spacing:2px;padding:9px 4px 10px;transition:all .2s;white-space:nowrap}
 .tab.active{color:#4ade80;border-bottom-color:#4ade80}
 main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:0 auto}
 .view{animation:fadeUp .25s ease}
+/* STATUS CARD */
 .status-card{background:rgba(18,24,20,.85);border:1px solid #1a2a20;border-radius:14px;padding:16px;margin-bottom:12px;backdrop-filter:blur(10px)}
 .status-card.off{border-color:#2a1a1a;background:rgba(24,18,18,.85)}
-.status-card.vacation{border-color:#1a2535;background:rgba(15,20,38,.85)}
+.status-card.vac{border-color:#1a2535;background:rgba(15,20,38,.85)}
 .status-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
 .status-label{font-size:9px;letter-spacing:4px;color:#555;margin-bottom:4px}
 .status-state{font-size:12px;letter-spacing:3px;color:#4ade80}
@@ -53,13 +54,13 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 .live-dur.off{color:#2a2a2a;font-size:20px}
 .live-sub{font-size:9px;color:#4ade80;letter-spacing:1px;margin-top:2px}
 .day-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1c1c1c;border-radius:8px;overflow:hidden}
-.day-stat{background:#0d0d0d;padding:9px 5px;text-align:center}
+.day-stat{background:#0d0d0d;padding:9px 4px;text-align:center}
 .ds-val{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
 .ds-lbl{font-size:7px;color:#444;letter-spacing:1.5px;margin-top:2px}
-/* SPECIAL DAY TAGS */
+/* DAY TAGS */
 .day-tag{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:1px;border-radius:4px;padding:3px 8px;margin-bottom:10px}
-.day-tag.festivo{color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
-.day-tag.vacation{color:#60a5fa;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2)}
+.day-tag.fest{color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+.day-tag.vac{color:#60a5fa;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2)}
 /* PROJECTS */
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .sec-title{font-size:9px;letter-spacing:4px;color:#555}
@@ -78,49 +79,35 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 #btn-clock.start{background:linear-gradient(135deg,#14532d,#16a34a);box-shadow:0 4px 20px rgba(22,163,74,.25)}
 #btn-clock.stop{background:linear-gradient(135deg,#7f1d1d,#dc2626);box-shadow:0 4px 20px rgba(220,38,38,.25)}
 #btn-clock:disabled{background:#1c1c1c;color:#333;box-shadow:none}
+/* ENTRIES */
 .entries-list{display:flex;flex-direction:column;gap:5px}
 .entry-item{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:8px;border:1px solid #1c1c1c;background:rgba(255,255,255,.02)}
-.entry-item.imported{border-color:#1a2535;background:rgba(15,20,35,.5)}
-.entry-item.vac-entry{border-color:#1a2535;background:rgba(15,20,40,.5)}
+.entry-item.imported{border-color:#1a2535}
 .entry-left{display:flex;align-items:center;gap:8px}
 .entry-proj-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .entry-proj-name{font-size:11px;color:#666;margin-bottom:2px}
 .entry-times{font-size:12px;color:#555}
-.entry-right{display:flex;align-items:center;gap:8px}
+.entry-right{display:flex;align-items:center;gap:6px}
 .entry-dur{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
 .entry-ongoing{font-size:10px;color:#4ade80;animation:blink 1.5s infinite}
-.imp-badge{font-size:8px;color:#60a5fa;letter-spacing:1px}
-.vac-badge{font-size:8px;color:#60a5fa;letter-spacing:1px}
-.del-btn{background:none;border:none;color:#333;font-size:15px;padding:2px 4px;line-height:1}
-.del-btn:active{color:#ef4444}
+.imp-badge{font-size:8px;color:#60a5fa}
+.icon-btn{background:none;border:none;color:#333;font-size:14px;padding:2px 4px;line-height:1;transition:color .15s}
+.icon-btn.edit:active{color:#f59e0b}
+.icon-btn.del:active{color:#ef4444}
 /* SUMMARY */
 .summary-card{background:rgba(18,24,20,.85);border:1px solid #1a2a20;border-radius:14px;padding:16px;margin-bottom:12px}
-.summary-card.negative{border-color:#2a1a1a;background:rgba(24,18,18,.85)}
+.summary-card.neg{border-color:#2a1a1a;background:rgba(24,18,18,.85)}
 .sum-label{font-size:9px;letter-spacing:4px;color:#555;margin-bottom:4px}
-.sum-balance{font-size:36px;font-weight:700;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.sum-balance{font-size:34px;font-weight:700;margin-bottom:10px;font-variant-numeric:tabular-nums}
 .sum-balance.pos{color:#4ade80}.sum-balance.neg{color:#ef4444}
-.sum-row{display:flex;justify-content:space-between;font-size:10px;color:#555;margin-bottom:6px}
+.sum-row{display:flex;justify-content:space-between;font-size:10px;color:#555;margin-bottom:6px;flex-wrap:wrap;gap:4px}
 .prog-wrap{height:4px;background:#1c1c1c;border-radius:2px;overflow:hidden;margin-bottom:5px}
 .prog-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,#15803d,#4ade80);transition:width .6s ease}
-/* CONVENTION INFO BOX */
-.conv-box{background:rgba(74,222,128,.04);border:1px solid #1a2a20;border-radius:8px;padding:10px 12px;margin-bottom:12px;display:flex;gap:12px;flex-wrap:wrap}
-.conv-stat{flex:1;min-width:80px;text-align:center}
-.conv-val{font-size:16px;font-weight:700;color:#4ade80;font-variant-numeric:tabular-nums}
-.conv-lbl{font-size:8px;color:#555;letter-spacing:2px;margin-top:2px}
-/* VACATION MINI CALENDAR */
-.vac-year-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.vac-month{background:rgba(15,20,38,.6);border:1px solid #1a2535;border-radius:10px;padding:10px}
-.vac-month-name{font-size:9px;letter-spacing:3px;color:#60a5fa;margin-bottom:7px;font-weight:700}
-.vac-days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.vd{font-size:9px;text-align:center;padding:3px 1px;border-radius:3px;color:#555;font-variant-numeric:tabular-nums;cursor:default}
-.vd.wd{color:#888;cursor:pointer}
-.vd.wd:active{background:rgba(96,165,250,.2)}
-.vd.festivo{color:#f59e0b;background:rgba(245,158,11,.1)}
-.vd.vacation{color:#60a5fa;background:rgba(96,165,250,.15);border-radius:3px;font-weight:700}
-.vd.worked{color:#4ade80}
-.vd.today-cell{outline:1px solid #333;border-radius:3px}
-.vd.weekend{color:#2a2a2a}
-.vd.empty{color:transparent;cursor:default}
+/* CONVENTION BOX */
+.conv-box{background:rgba(74,222,128,.04);border:1px solid #1a2a20;border-radius:8px;padding:10px 8px;margin-bottom:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.conv-stat{text-align:center}
+.conv-val{font-size:15px;font-weight:700;color:#4ade80;font-variant-numeric:tabular-nums}
+.conv-lbl{font-size:7px;color:#555;letter-spacing:1.5px;margin-top:2px}
 /* PROJECT BARS */
 .proj-breakdown{margin-top:12px}
 .proj-bar-item{margin-bottom:10px}
@@ -133,12 +120,12 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 .day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:12px}
 .day-cell{background:rgba(255,255,255,.02);border:1px solid #1c1c1c;border-radius:7px;padding:7px 3px;display:flex;flex-direction:column;align-items:center;gap:4px}
 .day-cell.today{border-color:#1a3320;background:rgba(74,222,128,.05)}
-.day-cell.festivo-cell{border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.04)}
-.day-cell.vac-cell{border-color:rgba(96,165,250,.2);background:rgba(96,165,250,.04)}
+.day-cell.fest-c{border-color:rgba(245,158,11,.25);background:rgba(245,158,11,.04)}
+.day-cell.vac-c{border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.04)}
 .dc-lbl{font-size:8px;letter-spacing:1px;color:#444;font-weight:700}
 .day-cell.today .dc-lbl{color:#4ade80}
-.day-cell.festivo-cell .dc-lbl{color:#f59e0b}
-.day-cell.vac-cell .dc-lbl{color:#60a5fa}
+.day-cell.fest-c .dc-lbl{color:#f59e0b}
+.day-cell.vac-c .dc-lbl{color:#60a5fa}
 .dc-bar{width:4px;height:32px;background:#1c1c1c;border-radius:2px;overflow:hidden;display:flex;align-items:flex-end}
 .dc-fill{width:100%;border-radius:2px;transition:height .5s ease}
 .dc-time{font-size:7px;color:#555;text-align:center;font-variant-numeric:tabular-nums}
@@ -146,14 +133,14 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 .period-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .period-nav button{background:none;border:1px solid #1c1c1c;border-radius:6px;color:#666;font-size:14px;width:30px;height:30px;line-height:1;transition:all .2s}
 .period-nav button:disabled{opacity:.25;cursor:default}
-.period-label{font-size:12px;color:#888;letter-spacing:2px}
+.period-label{font-size:12px;color:#888;letter-spacing:1px}
 /* MODALS */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .modal-overlay.open{display:flex}
-.modal{background:#111;border:1px solid #222;border-radius:18px 18px 0 0;padding:20px 16px calc(36px + env(safe-area-inset-bottom));width:100%;max-width:520px;max-height:90vh;overflow-y:auto;animation:slideUp .28s ease}
+.modal{background:#111;border:1px solid #222;border-radius:18px 18px 0 0;padding:20px 16px calc(36px + env(safe-area-inset-bottom));width:100%;max-width:520px;max-height:92vh;overflow-y:auto;animation:slideUp .28s ease}
 .modal-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
 .modal-title{font-size:12px;font-weight:700;letter-spacing:3px;color:#4ade80}
-.modal-title.blue{color:#60a5fa}
+.modal-title.blue{color:#60a5fa}.modal-title.amber{color:#f59e0b}
 .modal-sub{font-size:10px;color:#555;margin-top:3px;letter-spacing:1px}
 .close-btn{background:none;border:1px solid #1c1c1c;border-radius:6px;color:#555;font-size:16px;width:30px;height:30px;flex-shrink:0;line-height:1;padding:0}
 .field{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
@@ -169,11 +156,13 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 .form-section.visible{display:flex}
 .preview-pill{font-size:11px;color:#4ade80;font-weight:700;background:rgba(74,222,128,.07);border:1px solid #1a3320;border-radius:20px;padding:4px 12px;align-self:flex-start;margin-bottom:11px;display:none}
 .action-btn{width:100%;padding:13px;border:none;border-radius:10px;background:linear-gradient(135deg,#14532d,#16a34a);color:#fff;font-size:12px;font-weight:700;letter-spacing:3px;box-shadow:0 3px 16px rgba(22,163,74,.2);margin-top:4px}
-.action-btn.blue{background:linear-gradient(135deg,#1e3a5f,#2563eb);box-shadow:0 3px 16px rgba(37,99,235,.2)}
+.action-btn.blue-btn{background:linear-gradient(135deg,#1e3a5f,#2563eb);box-shadow:0 3px 16px rgba(37,99,235,.2)}
+.action-btn.amber-btn{background:linear-gradient(135deg,#451a03,#d97706);box-shadow:0 3px 16px rgba(217,119,6,.2)}
 .feedback{font-size:11px;border-radius:8px;padding:9px 12px;margin-top:10px;display:none}
 .feedback.err{color:#ef4444;background:rgba(239,68,68,.08);border:1px solid #2a1212}
 .feedback.ok{color:#4ade80;background:rgba(74,222,128,.07);border:1px solid #1a3320}
-.modal-tip{font-size:9px;color:#444;margin-top:16px;line-height:1.8;border-top:1px solid #1c1c1c;padding-top:12px}
+.modal-tip{font-size:9px;color:#444;margin-top:14px;line-height:1.8;border-top:1px solid #1c1c1c;padding-top:12px}
+/* PROJ LIST */
 .proj-list-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #1c1c1c;border-radius:8px;background:rgba(255,255,255,.02);margin-bottom:6px}
 .proj-list-color{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .proj-list-name{flex:1;font-size:13px;color:#aaa}
@@ -183,24 +172,29 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 .color-picker{width:42px;height:40px;border:1px solid #1c1c1c;border-radius:8px;background:#0d0d0d;padding:3px;cursor:pointer;flex-shrink:0}
 .color-picker::-webkit-color-swatch-wrapper{padding:0}
 .color-picker::-webkit-color-swatch{border:none;border-radius:4px}
-/* VACATION CALENDAR IN MODAL */
-.vac-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:10px}
-.vac-cal-hdr{font-size:8px;text-align:center;color:#444;font-weight:700;letter-spacing:1px;padding:3px 0}
-.vac-cal-day{font-size:11px;text-align:center;padding:6px 2px;border-radius:5px;cursor:pointer;font-variant-numeric:tabular-nums;transition:all .15s;border:1px solid transparent}
-.vac-cal-day.empty{cursor:default}
-.vac-cal-day.weekend{color:#333;cursor:default}
-.vac-cal-day.festivo-d{color:#f59e0b;cursor:default;background:rgba(245,158,11,.08)}
-.vac-cal-day.workday{color:#888;background:rgba(255,255,255,.03)}
-.vac-cal-day.workday:hover{background:rgba(96,165,250,.15);color:#60a5fa}
-.vac-cal-day.vacation-d{color:#60a5fa;background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.3);font-weight:700}
-.vac-cal-day.worked-d{color:#4ade80;background:rgba(74,222,128,.06)}
-.vac-cal-day.today-d{outline:1px solid #555}
-.vac-month-hdr{font-size:10px;font-weight:700;letter-spacing:3px;color:#60a5fa;margin:14px 0 8px;text-align:center}
-.vac-summary{background:rgba(96,165,250,.05);border:1px solid rgba(96,165,250,.15);border-radius:8px;padding:10px 12px;margin-bottom:14px;display:flex;gap:16px;justify-content:center}
-.vac-s-item{text-align:center}
-.vac-s-val{font-size:18px;font-weight:700;color:#60a5fa}
-.vac-s-lbl{font-size:8px;color:#555;letter-spacing:2px;margin-top:2px}
-#install-banner{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#111;border:1px solid #1a3320;border-radius:12px;padding:12px 16px;display:none;align-items:center;gap:12px;z-index:300;box-shadow:0 8px 32px rgba(0,0,0,.6);max-width:340px;width:calc(100% - 32px)}
+/* VAC MODAL */
+.vac-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.15);border-radius:10px;padding:12px 8px;margin-bottom:14px}
+.vs-item{text-align:center}
+.vs-val{font-size:18px;font-weight:700;color:#60a5fa;font-variant-numeric:tabular-nums}
+.vs-lbl{font-size:7px;color:#555;letter-spacing:1.5px;margin-top:2px}
+.vs-val.green{color:#4ade80}
+.vac-pending-row{display:flex;gap:8px;margin-bottom:14px;align-items:center}
+.vac-pending-label{font-size:10px;color:#888;flex:1}
+.vac-pending-input{width:60px;background:#0d0d0d;border:1px solid #1c1c1c;border-radius:6px;color:#60a5fa;font-size:14px;padding:6px 8px;outline:none;text-align:center}
+.vac-month-hdr{font-size:10px;font-weight:700;letter-spacing:3px;color:#60a5fa;margin:12px 0 7px;text-align:center}
+.vac-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px}
+.vac-cal-hdr{font-size:8px;text-align:center;color:#333;font-weight:700;padding:2px 0}
+.vcd{font-size:11px;text-align:center;padding:5px 2px;border-radius:4px;cursor:default;font-variant-numeric:tabular-nums;border:1px solid transparent}
+.vcd.wd{color:#777;cursor:pointer;background:rgba(255,255,255,.03)}
+.vcd.wd:hover{background:rgba(96,165,250,.15);color:#60a5fa}
+.vcd.fest-d{color:#f59e0b;background:rgba(245,158,11,.08)}
+.vcd.vac-d{color:#60a5fa;background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.3);font-weight:700}
+.vcd.worked-d{color:#4ade80;background:rgba(74,222,128,.06)}
+.vcd.today-d{outline:1px solid #444;border-radius:4px}
+.vcd.wknd{color:#2a2a2a}
+.vcd.empty{color:transparent}
+/* INSTALL BANNER */
+#install-banner{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#111;border:1px solid #1a3320;border-radius:12px;padding:12px 16px;display:none;align-items:center;gap:12px;z-index:300;box-shadow:0 8px 32px rgba(0,0,0,.6);max-width:340px;width:calc(100% - 28px)}
 #install-banner.show{display:flex}
 .install-text{font-size:11px;color:#aaa;line-height:1.5;flex:1}
 .install-text strong{color:#4ade80}
@@ -215,10 +209,11 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
   <div class="hdr-row">
     <div class="logo-wrap"><div class="logo-dot" id="logo-dot"></div><span class="app-title">FICHA+</span></div>
     <div class="hdr-right">
-      <span id="clock">00:00:00</span>
-      <button class="hdr-btn" id="btn-open-projects">⚙ PROY.</button>
-      <button class="hdr-btn vac" id="btn-open-vac">🏖 VACAC.</button>
-      <button class="hdr-btn accent" id="btn-open-import">⬆ IMP.</button>
+      <span id="clock">--:--:--</span>
+      <button class="hdr-btn" id="btn-open-projects">⚙ PROY</button>
+      <button class="hdr-btn blue" id="btn-open-vac">🏖 VAC</button>
+      <button class="hdr-btn green" id="btn-open-import">⬆ IMP</button>
+      <button class="hdr-btn amber" id="btn-export-excel">📊 XLS</button>
     </div>
   </div>
 </header>
@@ -244,7 +239,25 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
     <input type="text" id="new-proj-name" class="inp" placeholder="Nombre del proyecto…"/>
     <button class="action-btn" id="btn-add-proj" style="width:auto;padding:10px 14px;margin:0;flex-shrink:0;font-size:11px">AÑADIR</button>
   </div>
-  <div class="modal-tip">💡 Asigna un color a cada proyecto. Puedes tener los que necesites y cambiarlos según la semana.</div>
+</div>
+</div>
+
+<!-- MODAL EDIT ENTRY -->
+<div class="modal-overlay" id="modal-edit">
+<div class="modal">
+  <div class="modal-hdr">
+    <div><div class="modal-title amber">✏️ EDITAR FICHAJE</div><div class="modal-sub" id="edit-modal-sub"></div></div>
+    <button class="close-btn" data-close="modal-edit">×</button>
+  </div>
+  <div class="field"><label class="lbl">PROYECTO</label><select id="edit-proj" class="sel"></select></div>
+  <div class="field-row">
+    <div class="field" style="margin:0"><label class="lbl">ENTRADA</label><input type="time" id="edit-in" class="inp"/></div>
+    <div class="field" style="margin:0"><label class="lbl">SALIDA</label><input type="time" id="edit-out" class="inp"/></div>
+  </div>
+  <div class="field"><label class="lbl">NOTA</label><input type="text" id="edit-note" class="inp" placeholder="Nota opcional…"/></div>
+  <div class="preview-pill" id="edit-preview" style="display:none"></div>
+  <button class="action-btn amber-btn" id="btn-save-edit">GUARDAR CAMBIOS</button>
+  <div class="feedback err" id="edit-err"></div>
 </div>
 </div>
 
@@ -252,15 +265,16 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 <div class="modal-overlay" id="modal-vac">
 <div class="modal">
   <div class="modal-hdr">
-    <div><div class="modal-title blue">🏖 VACACIONES Y DÍAS LIBRES</div><div class="modal-sub">Toca un día laborable para marcarlo como vacaciones</div></div>
+    <div><div class="modal-title blue">🏖 VACACIONES Y DÍAS LIBRES</div><div class="modal-sub">Toca un día laborable para marcarlo/desmarcarlo</div></div>
     <button class="close-btn" data-close="modal-vac">×</button>
   </div>
-  <div class="vac-summary">
-    <div class="vac-s-item"><div class="vac-s-val" id="vac-count">0</div><div class="vac-s-lbl">DÍAS MARCADOS</div></div>
-    <div class="vac-s-item"><div class="vac-s-val" id="vac-remain">0</div><div class="vac-s-lbl">DÍAS OBJETIVO</div></div>
+  <div class="vac-pending-row">
+    <span class="vac-pending-label">Días pendientes del año anterior (disfrutar antes 30 abril):</span>
+    <input type="number" id="vac-prev-days" class="vac-pending-input" min="0" max="30" value="0"/>
   </div>
+  <div class="vac-summary-grid" id="vac-summary"></div>
   <div id="vac-cal-container"></div>
-  <div class="modal-tip">🟡 Festivo oficial · 🔵 Vacaciones/libre elección · 🟢 Día trabajado · Toca cualquier día laborable para marcar/desmarcar como vacaciones.</div>
+  <div class="modal-tip">🟡 Festivo · 🔵 Vacaciones/libre elección · 🟢 Día trabajado<br>Los días disponibles = 22 vacaciones + 5 libre disposición + 2 si trabajas semana Pilar + días año anterior.</div>
 </div>
 </div>
 
@@ -268,7 +282,7 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 <div class="modal-overlay" id="modal-import">
 <div class="modal">
   <div class="modal-hdr">
-    <div><div class="modal-title">⬆ IMPORTAR HORAS</div><div class="modal-sub">Añade registros de semanas o días anteriores</div></div>
+    <div><div class="modal-title">⬆ IMPORTAR HORAS</div><div class="modal-sub">Añade registros de fechas anteriores</div></div>
     <button class="close-btn" data-close="modal-import">×</button>
   </div>
   <div class="mode-tabs">
@@ -301,7 +315,7 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
   </div>
   <div class="feedback err" id="imp-err"></div>
   <div class="feedback ok" id="imp-ok"></div>
-  <div class="modal-tip">💡 Puedes importar varias entradas seguidas sin cerrar el panel. Los registros importados se marcan con ↑.</div>
+  <div class="modal-tip">💡 Puedes importar varias entradas sin cerrar el panel. Los registros importados se marcan con ↑.</div>
 </div>
 </div>
 
@@ -311,152 +325,212 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
 </div>
 
 <script>
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  CONVENIO ECODES 2026
-// ══════════════════════════════════════════════════
-const CONVENTION = {
-  year: 2026,
-  totalDays: 215,
-  totalHours: 1634,
-  totalMins: 1634 * 60,       // 98040 min
-  dailyMins: 456,              // 7h 36m (1634h / 215 days)
-  weeklyHours: 38,
+// ════════════════════════════════════════
+const CONV = { year:2026, totalDays:215, totalHours:1634, totalMins:98040, dailyMins:456 };
+
+const FESTIVOS = {
+  "2026-01-01":"Año Nuevo","2026-01-02":"Día ECODES","2026-01-06":"Reyes",
+  "2026-01-29":"San Valero","2026-03-05":"Cincomarzada","2026-03-06":"Día ECODES",
+  "2026-04-02":"Jueves Santo","2026-04-03":"Viernes Santo",
+  "2026-04-23":"Día de Aragón","2026-04-24":"Día ECODES",
+  "2026-05-01":"Día del Trabajo","2026-10-12":"El Pilar",
+  "2026-11-02":"Todos los Santos","2026-12-07":"Por la Constitución",
+  "2026-12-08":"La Inmaculada","2026-12-24":"Día ECODES",
+  "2026-12-25":"Navidad","2026-12-31":"Día ECODES"
 };
 
-// Festivos oficiales Zaragoza 2026 (nacionales + autonómicos + locales + ECODES)
-const FESTIVOS_2026 = {
-  "2026-01-01": "Año Nuevo",
-  "2026-01-02": "Día ECODES",
-  "2026-01-06": "Reyes",
-  "2026-01-29": "San Valero",
-  "2026-03-05": "Cincomarzada",
-  "2026-03-06": "Día ECODES",
-  "2026-04-02": "Jueves Santo",
-  "2026-04-03": "Viernes Santo",
-  "2026-04-23": "Día de Aragón",
-  "2026-04-24": "Día ECODES",
-  "2026-05-01": "Día del Trabajo",
-  "2026-10-12": "El Pilar",
-  "2026-11-02": "Todos los Santos",
-  "2026-12-07": "Por la Constitución",
-  "2026-12-08": "La Inmaculada",
-  "2026-12-24": "Día ECODES",
-  "2026-12-25": "Navidad",
-  "2026-12-31": "Día ECODES",
-};
+// Pilar week workdays (Oct 12 is festivo, so Oct 13-16 = 4 workdays)
+const PILAR_WEEK_WORKDAYS = ["2026-10-13","2026-10-14","2026-10-15","2026-10-16"];
 
-const isFestivo = dk => !!FESTIVOS_2026[dk];
-const isWeekend = dk => { const d = new Date(dk+'T12:00:00'); return d.getDay()===0||d.getDay()===6; };
-const isWorkday = dk => !isWeekend(dk) && !isFestivo(dk);
+const isFest = dk => !!FESTIVOS[dk];
+const isWknd = dk => { const d=new Date(dk+'T12:00:00'); return d.getDay()===0||d.getDay()===6; };
+const isWorkday = dk => !isWknd(dk) && !isFest(dk);
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  STATE
-// ══════════════════════════════════════════════════
-let state = {
-  records: {},
-  projects: [{id:'p0', name:'General', color:'#4ade80'}],
-  vacations: [],   // array of 'YYYY-MM-DD' strings
-};
-try { const s=JSON.parse(localStorage.getItem('fichav3')||'null'); if(s&&s.records) state=s; } catch{}
-const save = () => { try{ localStorage.setItem('fichav3', JSON.stringify(state)); }catch{} };
+// ════════════════════════════════════════
+let state = { records:{}, projects:[{id:'p0',name:'General',color:'#4ade80'}], vacations:[], prevYearVacDays:0 };
+try{ const s=JSON.parse(localStorage.getItem('fichav3')||localStorage.getItem('fichav2')||'null'); if(s&&s.records){ state.records=s.records; if(s.projects&&s.projects.length)state.projects=s.projects; if(s.vacations)state.vacations=s.vacations; if(s.prevYearVacDays)state.prevYearVacDays=s.prevYearVacDays; } }catch{}
+const save=()=>{ try{localStorage.setItem('fichav3',JSON.stringify(state));}catch{} };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  HELPERS
-// ══════════════════════════════════════════════════
-const fmtDur = m => { const sg=m<0?'-':'',a=Math.abs(m); return`${sg}${Math.floor(a/60)}h ${String(a%60).padStart(2,'0')}m`; };
-const fmtTime = iso => iso ? new Date(iso).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}) : '--:--';
-const todayKey = () => new Date().toISOString().split('T')[0];
-const getWeekKey = d => { const x=new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x.toISOString().split('T')[0]; };
-const fmtWeek = wk => { const s=new Date(wk),e=new Date(wk); e.setDate(e.getDate()+6); return`${s.getDate()} ${s.toLocaleDateString('es-ES',{month:'short'})} \u2013 ${e.getDate()} ${e.toLocaleDateString('es-ES',{month:'short',year:'numeric'})}`; };
-const uid = () => 'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
-const getProj = id => state.projects.find(p=>p.id===id)||{id:'?',name:'Sin proyecto',color:'#555'};
-const entryMins = (e,nowMs) => { if(!e||!e.in)return 0; const end=e.out?new Date(e.out).getTime():(nowMs||Date.now()); return Math.max(0,Math.floor((end-new Date(e.in).getTime())/60000)); };
-const getDayEntries = dk => state.records[dk]||[];
-const getDayMins = (dk,inclLive=false) => { const now=inclLive?Date.now():null; return getDayEntries(dk).reduce((t,e)=>t+(e.out||inclLive?entryMins(e,now):0),0); };
-const getDayProjMins = (dk,inclLive=false) => { const map={},now=inclLive?Date.now():null; getDayEntries(dk).forEach(e=>{ if(!e.out&&!inclLive)return; const m=entryMins(e,now); map[e.projId||'?']=(map[e.projId||'?']||0)+m; }); return map; };
-const getWeekDays = wk => Array.from({length:7},(_,i)=>{ const d=new Date(wk); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
-const getEntriesInRange = (s,e) => { const arr=[]; Object.keys(state.records).forEach(dk=>{ if(dk>=s&&dk<=e) state.records[dk].forEach(en=>arr.push({...en,dk})); }); return arr; };
-const getRangeMins = (s,e) => getEntriesInRange(s,e).reduce((t,en)=>en.out?t+entryMins(en):t,0);
-const getRangeProjMins = (s,e) => { const map={}; getEntriesInRange(s,e).forEach(en=>{ if(!en.out)return; const m=entryMins(en); map[en.projId||'?']=(map[en.projId||'?']||0)+m; }); return map; };
-const isVacation = dk => state.vacations.includes(dk);
-const MONTHS_SHORT = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-const DAYS_ES = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+// ════════════════════════════════════════
+const fmtDur=m=>{const sg=m<0?'-':'',a=Math.abs(m);return`${sg}${Math.floor(a/60)}h ${String(a%60).padStart(2,'0')}m`;};
+const fmtTime=iso=>iso?new Date(iso).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}):'--:--';
+const todayKey=()=>new Date().toISOString().split('T')[0];
 
-// ── CONVENTION-AWARE working day target ──
-// For a given range, count workdays that are not vacation
-const countWorkdays = (startDk, endDk, inclVacation=false) => {
+// FIX: always use T12:00:00 to avoid timezone offset bugs
+const dateFromKey=dk=>new Date(dk+'T12:00:00');
+const getWeekKey=dk=>{
+  const d=dateFromKey(dk);
+  // getDay: Sun=0,Mon=1,...,Sat=6  -> days since Monday = (getDay()+6)%7
+  const daysSinceMon=(d.getDay()+6)%7;
+  const mon=new Date(d); mon.setDate(d.getDate()-daysSinceMon);
+  return mon.toISOString().split('T')[0];
+};
+const fmtWeek=wk=>{
+  const s=dateFromKey(wk), e=new Date(s); e.setDate(s.getDate()+6);
+  return`${s.getDate()} ${s.toLocaleDateString('es-ES',{month:'short'})} \u2013 ${e.getDate()} ${e.toLocaleDateString('es-ES',{month:'short',year:'numeric'})}`;
+};
+// FIX: generate 7 days from Monday using date arithmetic (not string parsing)
+const getWeekDays=wk=>{
+  const mon=dateFromKey(wk);
+  return Array.from({length:7},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d.toISOString().split('T')[0];});
+};
+const uid=()=>'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const getProj=id=>state.projects.find(p=>p.id===id)||{id:'?',name:'Sin proyecto',color:'#555'};
+const entryMins=(e,nowMs)=>{if(!e||!e.in)return 0;const end=e.out?new Date(e.out).getTime():(nowMs||Date.now());return Math.max(0,Math.floor((end-new Date(e.in).getTime())/60000));};
+const getDayEntries=dk=>state.records[dk]||[];
+const getDayMins=(dk,live=false)=>{const now=live?Date.now():null;return getDayEntries(dk).reduce((t,e)=>t+(e.out||live?entryMins(e,now):0),0);};
+const getDayProjMins=(dk,live=false)=>{const map={},now=live?Date.now():null;getDayEntries(dk).forEach(e=>{if(!e.out&&!live)return;const m=entryMins(e,now);map[e.projId||'?']=(map[e.projId||'?']||0)+m;});return map;};
+const isVac=dk=>state.vacations.includes(dk);
+const MONTHS_SHORT=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const DAYS_ES=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+
+const getEntriesInRange=(s,e)=>{const arr=[];Object.keys(state.records).forEach(dk=>{if(dk>=s&&dk<=e)state.records[dk].forEach(en=>arr.push({...en,dk}));});return arr;};
+const getRangeMins=(s,e)=>getEntriesInRange(s,e).reduce((t,en)=>en.out?t+entryMins(en):t,0);
+const getRangeProjMins=(s,e)=>{const map={};getEntriesInRange(s,e).forEach(en=>{if(!en.out)return;const m=entryMins(en);map[en.projId||'?']=(map[en.projId||'?']||0)+m;});return map;};
+
+// Count workdays in range up to today, excluding vacations
+const countWorkdays=(startDk,endDk,exclVac=true)=>{
   let n=0; const today=todayKey();
-  let c=new Date(startDk+'T12:00:00');
-  const end=new Date(endDk+'T12:00:00');
+  let c=dateFromKey(startDk); const end=dateFromKey(endDk);
   while(c<=end){
     const dk=c.toISOString().split('T')[0];
-    if(dk>today) break;
-    if(isWorkday(dk) && (inclVacation || !isVacation(dk))) n++;
+    if(dk>today)break;
+    if(isWorkday(dk)&&(!exclVac||!isVac(dk)))n++;
     c.setDate(c.getDate()+1);
   }
   return n;
 };
+const getRangeTargetMins=(s,e)=>countWorkdays(s,e)*CONV.dailyMins;
 
-// Target minutes for a range: workdays × dailyMins
-const getRangeTargetMins = (startDk, endDk) => countWorkdays(startDk, endDk) * CONVENTION.dailyMins;
-
-// Annual progress: how many of 215 convention days have passed (as workdays up to today, excl. vacation)
-const getYearProgress = yr => {
-  const fDk=`${yr}-01-01`, lDk=`${yr}-12-31`;
-  const worked = countWorkdays(fDk, lDk, false);
-  const vacTaken = state.vacations.filter(d=>d>=fDk&&d<=lDk&&isWorkday(d)).length;
-  return { worked, vacTaken, total: CONVENTION.totalDays };
+// FIX: get weeks that OVERLAP with a month (any day of the week is inside the month)
+const getWeeksForMonth=(yr,mn)=>{
+  const firstDay=new Date(yr,mn,1), lastDay=new Date(yr,mn+1,0);
+  const firstDk=firstDay.toISOString().split('T')[0];
+  const lastDk=lastDay.toISOString().split('T')[0];
+  // Start from Monday of the week containing the 1st
+  const startMon=dateFromKey(firstDk);
+  startMon.setDate(startMon.getDate()-((startMon.getDay()+6)%7));
+  const weeks=[];
+  let cursor=new Date(startMon);
+  while(true){
+    const wkDk=cursor.toISOString().split('T')[0];
+    const wkEnd=new Date(cursor); wkEnd.setDate(cursor.getDate()+6);
+    const wkEndDk=wkEnd.toISOString().split('T')[0];
+    // Week overlaps month if its start <= lastDk AND its end >= firstDk
+    if(wkDk>lastDk)break;
+    if(wkEndDk>=firstDk)weeks.push(wkDk);
+    cursor.setDate(cursor.getDate()+7);
+    if(weeks.length>6)break;
+  }
+  return weeks;
 };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
+//  VACATION COUNTER
+// ════════════════════════════════════════
+const vacStats=()=>{
+  const yr=2026, dk=todayKey();
+  const markedVacs=state.vacations.filter(d=>d.startsWith('2026')&&isWorkday(d)).length;
+  // Check if worked Pilar week (all 4 workdays)
+  const workedPilar=PILAR_WEEK_WORKDAYS.every(d=>getDayMins(d)>0||isVac(d));
+  const pilarBonus=workedPilar?2:0;
+  const prevDays=parseInt(state.prevYearVacDays||0);
+  const total=22+5+pilarBonus+prevDays;
+  const remaining=total-markedVacs;
+  return{total,markedVacs,pilarBonus,prevDays,remaining,workedPilar};
+};
+
+// ════════════════════════════════════════
 //  SESSION
-// ══════════════════════════════════════════════════
-const getActiveEntry = () => { const dk=todayKey(); const entries=state.records[dk]||[]; const last=entries[entries.length-1]; return(last&&!last.out)?{entry:last,dk,idx:entries.length-1}:null; };
-const clockIn = (projId,note='') => { const dk=todayKey(); if(!state.records[dk])state.records[dk]=[]; state.records[dk].push({in:new Date().toISOString(),out:null,projId,note}); save(); render(); };
-const clockOut = () => { const a=getActiveEntry(); if(!a)return; state.records[a.dk][a.idx].out=new Date().toISOString(); save(); render(); };
-const switchProject = projId => { const a=getActiveEntry(); if(!a){clockIn(projId);return;} state.records[a.dk][a.idx].out=new Date().toISOString(); const dk=todayKey(); if(!state.records[dk])state.records[dk]=[]; state.records[dk].push({in:new Date().toISOString(),out:null,projId,note:''}); save(); render(); };
-const deleteEntry = (dk,idx) => { state.records[dk].splice(idx,1); save(); render(); };
+// ════════════════════════════════════════
+const getActiveEntry=()=>{const dk=todayKey();const entries=state.records[dk]||[];const last=entries[entries.length-1];return(last&&!last.out)?{entry:last,dk,idx:entries.length-1}:null;};
+const clockIn=(projId,note='')=>{const dk=todayKey();if(!state.records[dk])state.records[dk]=[];state.records[dk].push({in:new Date().toISOString(),out:null,projId,note});save();render();};
+const clockOut=()=>{const a=getActiveEntry();if(!a)return;state.records[a.dk][a.idx].out=new Date().toISOString();save();render();};
+const switchProject=projId=>{const a=getActiveEntry();if(!a){clockIn(projId);return;}state.records[a.dk][a.idx].out=new Date().toISOString();const dk=todayKey();if(!state.records[dk])state.records[dk]=[];state.records[dk].push({in:new Date().toISOString(),out:null,projId,note:''});save();render();};
+const deleteEntry=(dk,idx)=>{state.records[dk].splice(idx,1);save();render();};
 
-// ══════════════════════════════════════════════════
-//  CLOCK
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
+//  EDIT ENTRY
+// ════════════════════════════════════════
+let editCtx=null;
+const openEditModal=(dk,idx)=>{
+  const e=state.records[dk][idx]; editCtx={dk,idx};
+  document.getElementById('edit-modal-sub').textContent=new Date(dk+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const pSel=document.getElementById('edit-proj');
+  pSel.innerHTML=state.projects.map(p=>`<option value="${p.id}"${e.projId===p.id?' selected':''}>${p.name}</option>`).join('');
+  document.getElementById('edit-in').value=e.in?e.in.slice(11,16):'09:00';
+  document.getElementById('edit-out').value=e.out?e.out.slice(11,16):'17:00';
+  document.getElementById('edit-note').value=e.note||'';
+  document.getElementById('edit-err').style.display='none';
+  updateEditPreview();
+  openModal('modal-edit');
+};
+const updateEditPreview=()=>{
+  const it=document.getElementById('edit-in').value, ot=document.getElementById('edit-out').value;
+  const pill=document.getElementById('edit-preview');
+  if(it&&ot&&editCtx){
+    const m=Math.floor((new Date(`${editCtx.dk}T${ot}`)-new Date(`${editCtx.dk}T${it}`))/60000);
+    if(m>0){pill.textContent=`= ${fmtDur(m)}`;pill.style.display='block';return;}
+  }
+  pill.style.display='none';
+};
+['edit-in','edit-out'].forEach(id=>document.getElementById(id).addEventListener('change',updateEditPreview));
+document.getElementById('btn-save-edit').addEventListener('click',()=>{
+  if(!editCtx)return;
+  const it=document.getElementById('edit-in').value, ot=document.getElementById('edit-out').value;
+  const projId=document.getElementById('edit-proj').value;
+  const note=document.getElementById('edit-note').value;
+  const errEl=document.getElementById('edit-err');
+  if(!it){errEl.textContent='Indica hora de entrada.';errEl.style.display='block';return;}
+  const inISO=new Date(`${editCtx.dk}T${it}:00`).toISOString();
+  let outISO=null;
+  if(ot){
+    const o=new Date(`${editCtx.dk}T${ot}:00`);
+    if(o<=new Date(`${editCtx.dk}T${it}:00`)){errEl.textContent='La salida debe ser posterior.';errEl.style.display='block';return;}
+    outISO=o.toISOString();
+  }
+  state.records[editCtx.dk][editCtx.idx]={...state.records[editCtx.dk][editCtx.idx],in:inISO,out:outISO,projId,note};
+  save();render();closeModal('modal-edit');
+});
+
+// ════════════════════════════════════════
+//  CLOCK TICK
+// ════════════════════════════════════════
 let clockInterval=null;
-const startClock=()=>{ if(clockInterval)clearInterval(clockInterval); clockInterval=setInterval(tick,1000); tick(); };
-const tick=()=>{ const cl=document.getElementById('clock'); if(cl)cl.textContent=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); updateLive(); };
-const updateLive=()=>{ const a=getActiveEntry(); if(!a)return; const m=entryMins(a.entry,Date.now()); const ld=document.getElementById('live-dur'); if(ld)ld.textContent=fmtDur(m); const dk=todayKey(),pm=getDayProjMins(dk,true),dm=getDayMins(dk,true); const et=document.getElementById('stat-today-total'); if(et)et.textContent=fmtDur(dm); const ep=document.getElementById('live-sub'); if(ep&&a.entry.projId)ep.textContent=fmtDur(pm[a.entry.projId]||0)+' en proyecto hoy'; };
+const startClock=()=>{if(clockInterval)clearInterval(clockInterval);clockInterval=setInterval(tick,1000);tick();};
+const tick=()=>{const cl=document.getElementById('clock');if(cl)cl.textContent=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});updateLive();};
+const updateLive=()=>{const a=getActiveEntry();if(!a)return;const m=entryMins(a.entry,Date.now());const ld=document.getElementById('live-dur');if(ld)ld.textContent=fmtDur(m);const dk=todayKey(),pm=getDayProjMins(dk,true),dm=getDayMins(dk,true);const et=document.getElementById('stat-today-total');if(et)et.textContent=fmtDur(dm);const ep=document.getElementById('live-sub');if(ep&&a.entry.projId)ep.textContent=fmtDur(pm[a.entry.projId]||0)+' en proyecto hoy';};
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  RENDER DISPATCH
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 let currentView='today';
-const render=()=>{ if(currentView==='today')renderToday(); else if(currentView==='week')renderWeek(); else if(currentView==='month')renderMonth(); else renderYear(); };
+const render=()=>{if(currentView==='today')renderToday();else if(currentView==='week')renderWeek();else if(currentView==='month')renderMonth();else renderYear();};
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  TODAY
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 const renderToday=()=>{
   const dk=todayKey(),now=Date.now(),a=getActiveEntry();
   const dm=getDayMins(dk,true),pm=getDayProjMins(dk,true);
-  const wk=getWeekKey(new Date()),wm=getWeekDays(wk).reduce((t,d)=>t+getDayMins(d,d===dk),0);
-  // week balance: workdays so far this week × dailyMins
-  const wTgt=getRangeTargetMins(wk, getWeekDays(wk)[6]);
-  const bal=wm-wTgt;
-  const ap=a?getProj(a.entry.projId):null;
-  const todayFest=FESTIVOS_2026[dk];
-  const todayVac=isVacation(dk);
-
-  let h=`<div class="view">`;
-
-  // Day tag
-  if(todayFest) h+=`<div class="day-tag festivo">🟡 FESTIVO — ${todayFest}</div>`;
-  else if(todayVac) h+=`<div class="day-tag vacation">🔵 VACACIONES / DÍA LIBRE</div>`;
-
-  // Status card
-  const cardClass = todayVac?'vacation':(a?'':'off');
-  h+=`<div class="status-card ${cardClass}">
+  const wk=getWeekKey(dk),wDays=getWeekDays(wk);
+  const wm=wDays.reduce((t,d)=>t+getDayMins(d,d===dk),0);
+  const wTgt=getRangeTargetMins(wDays[0],wDays[6]);
+  const bal=wm-wTgt, ap=a?getProj(a.entry.projId):null;
+  const todayFest=FESTIVOS[dk], todayVac=isVac(dk);
+  let h='<div class="view">';
+  if(todayFest)h+=`<div class="day-tag fest">🟡 FESTIVO — ${todayFest}</div>`;
+  else if(todayVac)h+=`<div class="day-tag vac">🔵 VACACIONES / DÍA LIBRE</div>`;
+  const cc=todayVac?'vac':(a?'':'off');
+  h+=`<div class="status-card ${cc}">
     <div class="status-top">
-      <div>
-        <div class="status-label">ESTADO</div>
+      <div><div class="status-label">ESTADO</div>
         <div class="status-state ${todayVac?'vac':(a?'':'off')}">${todayVac?'DÍA LIBRE':(a?'TRABAJANDO':'FUERA DE OFICINA')}</div>
         <div class="status-proj">${ap?`<span style="color:${ap.color}">●</span> ${ap.name}`:''}</div>
       </div>
@@ -469,209 +543,227 @@ const renderToday=()=>{
       <div class="day-stat"><div class="ds-val" id="stat-today-total">${fmtDur(dm)}</div><div class="ds-lbl">HOY</div></div>
       <div class="day-stat"><div class="ds-val">${fmtDur(wm)}</div><div class="ds-lbl">SEMANA</div></div>
       <div class="day-stat"><div class="ds-val" style="color:${bal>=0?'#4ade80':'#ef4444'}">${bal>=0?'+':''}${fmtDur(bal)}</div><div class="ds-lbl">BAL.SEM</div></div>
-      <div class="day-stat"><div class="ds-val" style="font-size:11px;color:#555">${fmtDur(CONVENTION.dailyMins)}</div><div class="ds-lbl">OBJETIVO</div></div>
+      <div class="day-stat"><div class="ds-val" style="font-size:11px;color:#555">${fmtDur(CONV.dailyMins)}</div><div class="ds-lbl">OBJETIVO</div></div>
     </div>
   </div>`;
-
-  // Projects
-  h+=`<div class="sec-hdr"><span class="sec-title">PROYECTOS</span><button class="sec-action" id="btn-inline-proj">+ GESTIONAR</button></div><div class="proj-grid" id="proj-grid">`;
-  if(state.projects.length===0){h+=`<div style="font-size:12px;color:#444;padding:8px 0">Crea proyectos en ⚙ PROY.</div>`;}
-  else state.projects.forEach(p=>{ const isA=a&&a.entry.projId===p.id; const ph=pm[p.id]||0; h+=`<div class="proj-chip${isA?' active-proj':''}" data-proj="${p.id}"><div class="proj-color" style="background:${p.color}"></div><div class="proj-name">${p.name}</div><div class="proj-today-hrs">${ph>0?fmtDur(ph):''}</div>${isA?'<div class="proj-active-dot"></div>':''}</div>`; });
+  h+=`<div class="sec-hdr"><span class="sec-title">PROYECTOS</span><button class="sec-action" id="btn-inline-proj">+ GESTIONAR</button></div><div class="proj-grid">`;
+  if(!state.projects.length)h+=`<div style="font-size:12px;color:#444;padding:8px 0">Crea proyectos en ⚙ PROY</div>`;
+  else state.projects.forEach(p=>{const isA=a&&a.entry.projId===p.id;const ph=pm[p.id]||0;h+=`<div class="proj-chip${isA?' active-proj':''}" data-proj="${p.id}"><div class="proj-color" style="background:${p.color}"></div><div class="proj-name">${p.name}</div><div class="proj-today-hrs">${ph>0?fmtDur(ph):''}</div>${isA?'<div class="proj-active-dot"></div>':''}</div>`;});
   h+=`</div>`;
-
-  const disabledBtn = todayFest||state.projects.length===0;
-  if(a) h+=`<button id="btn-clock" class="stop">◼ FICHAR SALIDA</button>`;
-  else h+=`<button id="btn-clock" class="start"${disabledBtn?' disabled':''}>▶ INICIAR FICHAJE</button>`;
-
+  if(a)h+=`<button id="btn-clock" class="stop">◼ FICHAR SALIDA</button>`;
+  else h+=`<button id="btn-clock" class="start"${(todayFest||!state.projects.length)?' disabled':''}>▶ INICIAR FICHAJE</button>`;
   const entries=getDayEntries(dk);
-  if(entries.length>0){ h+=`<div class="sec-title" style="margin-bottom:8px">REGISTROS DE HOY</div><div class="entries-list">`; entries.forEach((e,i)=>{ const pr=getProj(e.projId); const m=entryMins(e,e.out?null:now); h+=`<div class="entry-item${e.imported?' imported':''}"><div class="entry-left"><div class="entry-proj-dot" style="background:${pr.color}"></div><div><div class="entry-proj-name">${pr.name}${e.imported?' <span class="imp-badge">↑IMP</span>':''}</div><div class="entry-times">${fmtTime(e.in)} → ${e.out?fmtTime(e.out):'...'}</div></div></div><div class="entry-right">${e.out?`<div class="entry-dur">${fmtDur(m)}</div>`:`<div class="entry-ongoing">EN CURSO</div>`}<button class="del-btn" data-del="${dk}" data-idx="${i}">×</button></div></div>`; }); h+=`</div>`; }
+  if(entries.length){h+=`<div class="sec-title" style="margin-bottom:8px">REGISTROS DE HOY</div><div class="entries-list">`;entries.forEach((e,i)=>{const pr=getProj(e.projId);const m=entryMins(e,e.out?null:now);h+=`<div class="entry-item${e.imported?' imported':''}"><div class="entry-left"><div class="entry-proj-dot" style="background:${pr.color}"></div><div><div class="entry-proj-name">${pr.name}${e.imported?' <span class="imp-badge">↑</span>':''}</div><div class="entry-times">${fmtTime(e.in)} → ${e.out?fmtTime(e.out):'...'}</div></div></div><div class="entry-right">${e.out?`<div class="entry-dur">${fmtDur(m)}</div>`:`<div class="entry-ongoing">EN CURSO</div>`}<button class="icon-btn edit" data-edit-dk="${dk}" data-edit-idx="${i}">✏️</button><button class="icon-btn del" data-del="${dk}" data-idx="${i}">×</button></div></div>`;});h+=`</div>`;}
   h+=`</div>`;
   document.getElementById('main').innerHTML=h;
   document.getElementById('logo-dot').className='logo-dot'+(a?' on':'');
-  document.querySelectorAll('.proj-chip').forEach(chip=>chip.addEventListener('click',()=>{ const pid=chip.dataset.proj; if(a&&a.entry.projId===pid)return; switchProject(pid); }));
-  const bc=document.getElementById('btn-clock'); if(bc)bc.addEventListener('click',()=>{ if(a)clockOut(); else if(state.projects.length>0&&!todayFest)clockIn(state.projects[0].id); });
-  document.querySelectorAll('[data-del]').forEach(btn=>btn.addEventListener('click',()=>deleteEntry(btn.dataset.del,parseInt(btn.dataset.idx))));
-  const ib=document.getElementById('btn-inline-proj'); if(ib)ib.addEventListener('click',()=>openModal('modal-projects'));
+  document.querySelectorAll('.proj-chip').forEach(c=>c.addEventListener('click',()=>{const pid=c.dataset.proj;if(a&&a.entry.projId===pid)return;switchProject(pid);}));
+  const bc=document.getElementById('btn-clock');if(bc)bc.addEventListener('click',()=>{if(a)clockOut();else if(state.projects.length&&!todayFest)clockIn(state.projects[0].id);});
+  document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>deleteEntry(b.dataset.del,parseInt(b.dataset.idx))));
+  document.querySelectorAll('[data-edit-dk]').forEach(b=>b.addEventListener('click',()=>openEditModal(b.dataset.editDk,parseInt(b.dataset.editIdx))));
+  const ib=document.getElementById('btn-inline-proj');if(ib)ib.addEventListener('click',()=>openModal('modal-projects'));
 };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  WEEK
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 let weekOff=0;
 const renderWeek=()=>{
-  const bd=new Date(getWeekKey(new Date())); bd.setDate(bd.getDate()+weekOff*7);
-  const wk=getWeekKey(bd),days=getWeekDays(wk),dk=todayKey();
+  const baseMon=dateFromKey(getWeekKey(todayKey())); baseMon.setDate(baseMon.getDate()+weekOff*7);
+  const wk=baseMon.toISOString().split('T')[0];
+  const days=getWeekDays(wk),dk=todayKey();
   const tm=days.reduce((t,d)=>t+getDayMins(d,d===dk),0);
-  const tgt=getRangeTargetMins(days[0],days[6]);
-  const bal=tm-tgt,pct=tgt>0?Math.min(100,(tm/tgt)*100):0;
-  const projMap={}; days.forEach(d=>{ Object.entries(getDayProjMins(d,d===dk)).forEach(([pid,m])=>projMap[pid]=(projMap[pid]||0)+m); });
-  const maxD=CONVENTION.dailyMins*1.5;
+  const tgt=getRangeTargetMins(days[0],days[6]),bal=tm-tgt,pct=tgt>0?Math.min(100,(tm/tgt)*100):0;
+  const projMap={};days.forEach(d=>Object.entries(getDayProjMins(d,d===dk)).forEach(([pid,m])=>projMap[pid]=(projMap[pid]||0)+m));
+  const maxD=CONV.dailyMins*1.5;
   let h=`<div class="view"><div class="period-nav"><button id="wp">‹</button><span class="period-label">${fmtWeek(wk)}</span><button id="wn"${weekOff>=0?' disabled':''}>›</button></div>
-  <div class="summary-card ${bal>=0?'':'negative'}">
+  <div class="summary-card ${bal>=0?'':'neg'}">
     <div class="sum-label">BALANCE SEMANAL</div>
     <div class="sum-balance ${bal>=0?'pos':'neg'}">${bal>=0?'+':''}${fmtDur(bal)}</div>
     <div class="prog-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Objetivo ${fmtDur(tgt)} (días lab. × ${fmtDur(CONVENTION.dailyMins)})</span></div>
+    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Obj: ${fmtDur(tgt)} (días lab × 7h36m)</span></div>
   </div>
   <div class="day-grid">`;
-  days.forEach((d,i)=>{ const m=getDayMins(d,d===dk); const p=Math.min(100,(m/maxD)*100); const fest=isFestivo(d); const vac=isVacation(d); const cls=d===dk?'today':fest?'festivo-cell':vac?'vac-cell':''; h+=`<div class="day-cell ${cls}"><div class="dc-lbl">${DAYS_ES[i]}</div><div class="dc-bar"><div class="dc-fill" style="height:${p}%;background:${fest?'#f59e0b':vac?'#60a5fa':m>0?'#4ade80':'transparent'}"></div></div><div class="dc-time">${fest?'fest':vac?'vac':m>0?fmtDur(m):'—'}</div></div>`; });
+  days.forEach((d,i)=>{const m=getDayMins(d,d===dk);const p=Math.min(100,(m/maxD)*100);const fest=isFest(d),vac=isVac(d);const cls=d===dk?'today':fest?'fest-c':vac?'vac-c':'';h+=`<div class="day-cell ${cls}"><div class="dc-lbl">${DAYS_ES[i]}</div><div class="dc-bar"><div class="dc-fill" style="height:${p}%;background:${fest?'#f59e0b':vac?'#60a5fa':m>0?'#4ade80':'transparent'}"></div></div><div class="dc-time">${fest?'fest':vac?'vac':m>0?fmtDur(m):'—'}</div></div>`;});
   h+=`</div>`;
+  // entries for each day this week
+  let hasEntries=false;
+  days.forEach(d=>{const es=getDayEntries(d);if(es.length)hasEntries=true;});
+  if(hasEntries){
+    h+=`<div class="sec-title" style="margin:14px 0 8px">REGISTROS</div><div class="entries-list">`;
+    days.forEach(d=>{
+      getDayEntries(d).forEach((e,i)=>{
+        const pr=getProj(e.projId);const m=e.out?entryMins(e):0;
+        const dayLbl=dateFromKey(d).toLocaleDateString('es-ES',{weekday:'short',day:'numeric'});
+        h+=`<div class="entry-item${e.imported?' imported':''}"><div class="entry-left"><div class="entry-proj-dot" style="background:${pr.color}"></div><div><div class="entry-proj-name">${dayLbl} · ${pr.name}</div><div class="entry-times">${fmtTime(e.in)} → ${e.out?fmtTime(e.out):'...'}</div></div></div><div class="entry-right">${e.out?`<div class="entry-dur">${fmtDur(m)}</div>`:''}<button class="icon-btn edit" data-edit-dk="${d}" data-edit-idx="${i}">✏️</button><button class="icon-btn del" data-del="${d}" data-idx="${i}">×</button></div></div>`;
+      });
+    });
+    h+=`</div>`;
+  }
   const tot=Object.values(projMap).reduce((a,b)=>a+b,0);
-  if(Object.keys(projMap).length>0){ h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`; Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{ const pr=getProj(pid); const p=tot>0?(m/tot)*100:0; h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)}</div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`; }); h+=`</div>`; }
+  if(Object.keys(projMap).length){h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`;Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{const pr=getProj(pid);const p=tot>0?(m/tot)*100:0;h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)}</div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`;});h+=`</div>`;}
   h+=`</div>`;
   document.getElementById('main').innerHTML=h;
   document.getElementById('wp').addEventListener('click',()=>{weekOff--;renderWeek();});
   document.getElementById('wn').addEventListener('click',()=>{if(weekOff<0){weekOff++;renderWeek();}});
+  document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>deleteEntry(b.dataset.del,parseInt(b.dataset.idx))));
+  document.querySelectorAll('[data-edit-dk]').forEach(b=>b.addEventListener('click',()=>openEditModal(b.dataset.editDk,parseInt(b.dataset.editIdx))));
 };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  MONTH
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 let moOff=0;
 const renderMonth=()=>{
-  const now=new Date(),y=now.getFullYear(),mo=now.getMonth()+moOff;
-  const date=new Date(y,mo,1),yr=date.getFullYear(),mn=date.getMonth();
+  const now=new Date(),baseY=now.getFullYear(),baseMo=now.getMonth()+moOff;
+  const d=new Date(baseY,baseMo,1),yr=d.getFullYear(),mn=d.getMonth();
   const fDk=`${yr}-${String(mn+1).padStart(2,'0')}-01`;
   const lDay=new Date(yr,mn+1,0),lDk=`${yr}-${String(mn+1).padStart(2,'0')}-${String(lDay.getDate()).padStart(2,'0')}`;
-  const tgt=getRangeTargetMins(fDk,lDk);
+  const wd=countWorkdays(fDk,lDk),tgt=wd*CONV.dailyMins;
   const tm=getRangeMins(fDk,lDk),bal=tm-tgt,pct=tgt>0?Math.min(100,(tm/tgt)*100):0;
   const projMap=getRangeProjMins(fDk,lDk);
-  const weeksInMonth=[]; let wk=getWeekKey(fDk);
-  for(let i=0;i<6;i++){ if(getWeekDays(wk)[0]>lDk)break; weeksInMonth.push(wk); const nd=new Date(wk); nd.setDate(nd.getDate()+7); wk=getWeekKey(nd); }
   const dk=todayKey();
-  const wd=countWorkdays(fDk,lDk);
-  let h=`<div class="view"><div class="period-nav"><button id="mp">‹</button><span class="period-label">${date.toLocaleDateString('es-ES',{month:'long',year:'numeric'}).toUpperCase()}</span><button id="mn"${moOff>=0?' disabled':''}>›</button></div>
-  <div class="summary-card ${bal>=0?'':'negative'}">
+  // FIX: use corrected getWeeksForMonth
+  const weeks=getWeeksForMonth(yr,mn);
+  let h=`<div class="view"><div class="period-nav"><button id="mp">‹</button><span class="period-label">${d.toLocaleDateString('es-ES',{month:'long',year:'numeric'}).toUpperCase()}</span><button id="mn"${moOff>=0?' disabled':''}>›</button></div>
+  <div class="summary-card ${bal>=0?'':'neg'}">
     <div class="sum-label">BALANCE MENSUAL</div>
     <div class="sum-balance ${bal>=0?'pos':'neg'}">${bal>=0?'+':''}${fmtDur(bal)}</div>
     <div class="prog-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Obj. ${fmtDur(tgt)} (${wd}d lab.)</span></div>
+    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Obj: ${fmtDur(tgt)} (${wd}d lab.)</span></div>
   </div>
   <div class="proj-breakdown" style="margin-bottom:12px"><div class="sec-title" style="margin-bottom:8px">POR SEMANAS</div>`;
-  weeksInMonth.forEach(wk=>{ const wm=getWeekDays(wk).reduce((t,d)=>t+getDayMins(d,d===dk),0); const wtgt=getRangeTargetMins(getWeekDays(wk)[0],getWeekDays(wk)[6]); const wb=wm-wtgt; h+=`<div class="entry-item"><div class="entry-left"><div class="entry-proj-dot" style="background:${wb>=0?'#4ade80':'#ef4444'}"></div><div><div class="entry-proj-name">${fmtWeek(wk)}</div></div></div><div class="entry-right" style="gap:12px"><div class="entry-dur">${fmtDur(wm)}</div><div style="font-size:12px;font-weight:700;color:${wb>=0?'#4ade80':'#ef4444'}">${wb>=0?'+':''}${fmtDur(wb)}</div></div></div>`; });
+  weeks.forEach(wk=>{
+    const wDays=getWeekDays(wk);
+    const wm=wDays.reduce((t,day)=>t+getDayMins(day,day===dk),0);
+    const wtgt=getRangeTargetMins(wDays[0],wDays[6]);
+    const wb=wm-wtgt;
+    h+=`<div class="entry-item"><div class="entry-left"><div class="entry-proj-dot" style="background:${wb>=0?'#4ade80':'#ef4444'}"></div><div><div class="entry-proj-name">${fmtWeek(wk)}</div></div></div><div class="entry-right" style="gap:12px"><div class="entry-dur">${fmtDur(wm)}</div><div style="font-size:12px;font-weight:700;color:${wb>=0?'#4ade80':'#ef4444'}">${wb>=0?'+':''}${fmtDur(wb)}</div></div></div>`;
+  });
   h+=`</div>`;
   const tot=Object.values(projMap).reduce((a,b)=>a+b,0);
-  if(Object.keys(projMap).length>0){ h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`; Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{ const pr=getProj(pid); const p=tot>0?(m/tot)*100:0; h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)}</div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`; }); h+=`</div>`; }
+  if(Object.keys(projMap).length){h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`;Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{const pr=getProj(pid);const p=tot>0?(m/tot)*100:0;h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)}</div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`;});h+=`</div>`;}
   h+=`</div>`;
   document.getElementById('main').innerHTML=h;
   document.getElementById('mp').addEventListener('click',()=>{moOff--;renderMonth();});
   document.getElementById('mn').addEventListener('click',()=>{if(moOff<0){moOff++;renderMonth();}});
 };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  YEAR
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 let yrOff=0;
 const renderYear=()=>{
   const yr=new Date().getFullYear()+yrOff;
-  const fDk=`${yr}-01-01`,lDk=`${yr}-12-31`;
-  const tm=getRangeMins(fDk,lDk);
-  const wd=countWorkdays(fDk,lDk);
-  const vacTaken=state.vacations.filter(d=>d>=fDk&&d<=lDk&&isWorkday(d)).length;
-  // For the convention year (2026): use the fixed 215 days / 1634h
-  const isConvYear = yr===CONVENTION.year;
-  const annualTarget = isConvYear ? CONVENTION.totalMins : wd*CONVENTION.dailyMins;
-  const workedDayTarget = wd*CONVENTION.dailyMins;
-  const bal=tm-workedDayTarget,pct=workedDayTarget>0?Math.min(100,(tm/workedDayTarget)*100):0;
+  const fDk=`${yr}-01-01`,lDk=`${yr}-12-31`,dk=todayKey();
+  const wd=countWorkdays(fDk,lDk),tm=getRangeMins(fDk,lDk);
+  const tgt=wd*CONV.dailyMins,bal=tm-tgt,pct=tgt>0?Math.min(100,(tm/tgt)*100):0;
   const projMap=getRangeProjMins(fDk,lDk);
-  const dk=todayKey();
-
+  const isConvYr=yr===CONV.year;
+  const vacTaken=state.vacations.filter(d=>d>=fDk&&d<=lDk&&isWorkday(d)).length;
   let h=`<div class="view"><div class="period-nav"><button id="yp">‹</button><span class="period-label">${yr}</span><button id="yn"${yrOff>=0?' disabled':''}>›</button></div>`;
-
-  // Convention box (only for 2026)
-  if(isConvYear){
-    const remaining=CONVENTION.totalDays-wd-vacTaken;
-    h+=`<div class="conv-box">
-      <div class="conv-stat"><div class="conv-val">${CONVENTION.totalDays}</div><div class="conv-lbl">DÍAS CONV.</div></div>
-      <div class="conv-stat"><div class="conv-val">${wd}</div><div class="conv-lbl">TRABAJADOS</div></div>
-      <div class="conv-stat"><div class="conv-val" style="color:#60a5fa">${vacTaken}</div><div class="conv-lbl">VACACIONES</div></div>
-      <div class="conv-stat"><div class="conv-val" style="color:#555">${Math.max(0,remaining)}</div><div class="conv-lbl">RESTANTES</div></div>
-    </div>`;
-  }
-
-  h+=`<div class="summary-card ${bal>=0?'':'negative'}">
+  if(isConvYr){const rem=Math.max(0,CONV.totalDays-wd-vacTaken);h+=`<div class="conv-box"><div class="conv-stat"><div class="conv-val">${CONV.totalDays}</div><div class="conv-lbl">DÍAS CONV</div></div><div class="conv-stat"><div class="conv-val">${wd}</div><div class="conv-lbl">TRABAJADOS</div></div><div class="conv-stat"><div class="conv-val" style="color:#60a5fa">${vacTaken}</div><div class="conv-lbl">VACACIONES</div></div><div class="conv-stat"><div class="conv-val" style="color:#555">${rem}</div><div class="conv-lbl">RESTANTES</div></div></div>`;}
+  h+=`<div class="summary-card ${bal>=0?'':'neg'}">
     <div class="sum-label">BALANCE ANUAL ${yr}</div>
     <div class="sum-balance ${bal>=0?'pos':'neg'}">${bal>=0?'+':''}${fmtDur(bal)}</div>
     <div class="prog-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Obj. ${fmtDur(workedDayTarget)} (${wd}d × ${fmtDur(CONVENTION.dailyMins)})</span></div>
+    <div class="sum-row"><span>${fmtDur(tm)} trabajadas</span><span>Obj: ${fmtDur(tgt)} (${wd}d × 7h36m)</span></div>
     <div style="font-size:10px;color:#555;margin-top:5px">${bal>=0?`${fmtDur(bal)} de horas extra acumuladas`:`Debes ${fmtDur(Math.abs(bal))} a la empresa`}</div>
   </div>
   <div class="proj-breakdown" style="margin-bottom:12px"><div class="sec-title" style="margin-bottom:8px">POR MESES</div>`;
-  for(let mo=0;mo<12;mo++){ const mf=`${yr}-${String(mo+1).padStart(2,'0')}-01`; if(mf>dk)break; const ml=new Date(yr,mo+1,0),mld=`${yr}-${String(mo+1).padStart(2,'0')}-${String(ml.getDate()).padStart(2,'0')}`; const mwd=countWorkdays(mf,mld),mtgt=mwd*CONVENTION.dailyMins,mm=getRangeMins(mf,mld),mb=mm-mtgt; h+=`<div class="entry-item"><div class="entry-left"><div class="entry-proj-dot" style="background:${mb>=0?'#4ade80':'#ef4444'}"></div><div><div class="entry-proj-name">${MONTHS_SHORT[mo]} ${yr}</div></div></div><div class="entry-right" style="gap:12px"><div class="entry-dur">${fmtDur(mm)}</div><div style="font-size:12px;font-weight:700;color:${mb>=0?'#4ade80':'#ef4444'}">${mb>=0?'+':''}${fmtDur(mb)}</div></div></div>`; }
+  for(let mo=0;mo<12;mo++){const mf=`${yr}-${String(mo+1).padStart(2,'0')}-01`;if(mf>dk)break;const ml=new Date(yr,mo+1,0),mld=`${yr}-${String(mo+1).padStart(2,'0')}-${String(ml.getDate()).padStart(2,'0')}`;const mwd=countWorkdays(mf,mld),mtgt=mwd*CONV.dailyMins,mm=getRangeMins(mf,mld),mb=mm-mtgt;h+=`<div class="entry-item"><div class="entry-left"><div class="entry-proj-dot" style="background:${mb>=0?'#4ade80':'#ef4444'}"></div><div><div class="entry-proj-name">${MONTHS_SHORT[mo]} ${yr}</div></div></div><div class="entry-right" style="gap:12px"><div class="entry-dur">${fmtDur(mm)}</div><div style="font-size:12px;font-weight:700;color:${mb>=0?'#4ade80':'#ef4444'}">${mb>=0?'+':''}${fmtDur(mb)}</div></div></div>`;}
   h+=`</div>`;
   const tot=Object.values(projMap).reduce((a,b)=>a+b,0);
-  if(Object.keys(projMap).length>0){ h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`; Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{ const pr=getProj(pid); const p=tot>0?(m/tot)*100:0; h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)} <span style="color:#555;font-size:9px">${Math.round(p)}%</span></div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`; }); h+=`</div>`; }
+  if(Object.keys(projMap).length){h+=`<div class="proj-breakdown"><div class="sec-title" style="margin-bottom:9px">POR PROYECTOS</div>`;Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,m])=>{const pr=getProj(pid);const p=tot>0?(m/tot)*100:0;h+=`<div class="proj-bar-item"><div class="proj-bar-hdr"><div class="proj-bar-name"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${pr.color}"></span>${pr.name}</div><div class="proj-bar-hrs" style="color:${pr.color}">${fmtDur(m)} <span style="color:#555;font-size:9px">${Math.round(p)}%</span></div></div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:${p}%;background:${pr.color}"></div></div></div>`;});h+=`</div>`;}
   h+=`</div>`;
   document.getElementById('main').innerHTML=h;
   document.getElementById('yp').addEventListener('click',()=>{yrOff--;renderYear();});
   document.getElementById('yn').addEventListener('click',()=>{if(yrOff<0){yrOff++;renderYear();}});
 };
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  VACATION MODAL
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 const renderVacModal=()=>{
-  const yr=2026,dk=todayKey();
-  const vacCount=state.vacations.filter(d=>d.startsWith('2026')&&isWorkday(d)).length;
-  const remainingDays=CONVENTION.totalDays;
-  document.getElementById('vac-count').textContent=vacCount;
-  document.getElementById('vac-remain').textContent=remainingDays+' conv.';
-
+  document.getElementById('vac-prev-days').value=state.prevYearVacDays||0;
+  const vs=vacStats();
+  document.getElementById('vac-summary').innerHTML=`
+    <div class="vs-item"><div class="vs-val">${vs.total}</div><div class="vs-lbl">DISPONIBLES</div></div>
+    <div class="vs-item"><div class="vs-val">${vs.markedVacs}</div><div class="vs-lbl">MARCADOS</div></div>
+    <div class="vs-item"><div class="vs-val" style="color:${vs.remaining>=0?'#60a5fa':'#ef4444'}">${vs.remaining}</div><div class="vs-lbl">PENDIENTES</div></div>
+    <div class="vs-item"><div class="vs-val" style="font-size:13px;color:#555">${vs.workedPilar?'+2✓':'Pilar?'}</div><div class="vs-lbl">PILAR</div></div>`;
+  const dk=todayKey();
   let html='';
   for(let mo=0;mo<12;mo++){
-    const firstDay=new Date(yr,mo,1),lastDay=new Date(yr,mo+1,0);
-    const fDk=`${yr}-${String(mo+1).padStart(2,'0')}-01`;
-    html+=`<div class="vac-month-hdr">${MONTHS_SHORT[mo].toUpperCase()} ${yr}</div>`;
-    html+=`<div class="vac-cal-grid">`;
-    // Day headers
+    const firstDay=new Date(2026,mo,1),lastDay=new Date(2026,mo+1,0);
+    html+=`<div class="vac-month-hdr">${MONTHS_SHORT[mo].toUpperCase()} 2026</div><div class="vac-cal-grid">`;
     ['L','M','X','J','V','S','D'].forEach(d=>html+=`<div class="vac-cal-hdr">${d}</div>`);
-    // Empty cells before first day (Monday=0)
     const startDow=(firstDay.getDay()+6)%7;
-    for(let i=0;i<startDow;i++) html+=`<div class="vac-cal-day empty"></div>`;
-    // Days
+    for(let i=0;i<startDow;i++)html+=`<div class="vcd empty"></div>`;
     for(let day=1;day<=lastDay.getDate();day++){
-      const cellDk=`${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-      const dow=new Date(cellDk+'T12:00:00').getDay();
-      const wknd=dow===0||dow===6;
-      const fest=isFestivo(cellDk);
-      const vac=isVacation(cellDk);
-      const worked=getDayMins(cellDk)>0;
-      const isToday=cellDk===dk;
-      let cls='vac-cal-day';
-      if(wknd)cls+=' weekend';
-      else if(fest)cls+=' festivo-d';
-      else if(vac)cls+=' vacation-d';
-      else if(worked)cls+=' worked-d';
-      else cls+=' workday';
-      if(isToday)cls+=' today-d';
-      const clickable=!wknd&&!fest?`data-vac="${cellDk}"`:'' ;
-      html+=`<div class="${cls}" ${clickable}>${day}</div>`;
+      const cellDk=`2026-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const dow=dateFromKey(cellDk).getDay();
+      const wknd=dow===0||dow===6,fest=isFest(cellDk),vac=isVac(cellDk),worked=getDayMins(cellDk)>0;
+      let cls='vcd';
+      if(wknd)cls+=' wknd';else if(fest)cls+=' fest-d';else if(vac)cls+=' vac-d';else if(worked)cls+=' worked-d';else cls+=' wd';
+      if(cellDk===dk)cls+=' today-d';
+      const clickAttr=(!wknd&&!fest)?`data-vac="${cellDk}"`:'';
+      html+=`<div class="${cls}" ${clickAttr}>${day}</div>`;
     }
     html+=`</div>`;
   }
   document.getElementById('vac-cal-container').innerHTML=html;
-
-  // Toggle vacation
-  document.querySelectorAll('[data-vac]').forEach(el=>{ el.addEventListener('click',()=>{ const d=el.dataset.vac; const idx=state.vacations.indexOf(d); if(idx>=0)state.vacations.splice(idx,1); else state.vacations.push(d); save(); renderVacModal(); render(); }); });
+  document.querySelectorAll('[data-vac]').forEach(el=>el.addEventListener('click',()=>{const d=el.dataset.vac;const idx=state.vacations.indexOf(d);if(idx>=0)state.vacations.splice(idx,1);else state.vacations.push(d);save();renderVacModal();render();}));
 };
+document.getElementById('vac-prev-days').addEventListener('change',()=>{state.prevYearVacDays=parseInt(document.getElementById('vac-prev-days').value||0);save();renderVacModal();});
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
+//  EXCEL EXPORT
+// ════════════════════════════════════════
+const exportExcel=()=>{
+  // Build CSV (Excel opens CSV fine with UTF-8 BOM)
+  const yr=new Date().getFullYear();
+  const fDk=`${yr}-01-01`,lDk=`${yr}-12-31`;
+  const entries=getEntriesInRange(fDk,lDk).filter(e=>e.out).sort((a,b)=>a.in.localeCompare(b.in));
+  if(!entries.length){alert('No hay registros para exportar en '+yr);return;}
+  const BOM='\uFEFF';
+  let csv=BOM+'Fecha;Día semana;Proyecto;Entrada;Salida;Horas;Minutos;Nota\n';
+  entries.forEach(e=>{
+    const proj=getProj(e.projId);
+    const dayName=dateFromKey(e.dk).toLocaleDateString('es-ES',{weekday:'long'});
+    const mins=entryMins(e);
+    const h=Math.floor(mins/60),m=mins%60;
+    const hDec=(mins/60).toFixed(2).replace('.',',');
+    csv+=`${e.dk};${dayName};${proj.name};${fmtTime(e.in)};${fmtTime(e.out)};${hDec};${m};${e.note||''}\n`;
+  });
+  // Also add summary by project
+  csv+='\nRESUMEN POR PROYECTO\nProyecto;Horas totales;Minutos totales\n';
+  const projMap=getRangeProjMins(fDk,lDk);
+  Object.entries(projMap).sort((a,b)=>b[1]-a[1]).forEach(([pid,mins])=>{
+    const pr=getProj(pid);
+    csv+=`${pr.name};${(mins/60).toFixed(2).replace('.',',')};${mins}\n`;
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=`fichajes_${yr}.csv`;
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
+};
+document.getElementById('btn-export-excel').addEventListener('click',exportExcel);
+
+// ════════════════════════════════════════
 //  PROJECTS MODAL
-// ══════════════════════════════════════════════════
-const renderProjList=()=>{
-  const el=document.getElementById('proj-list'); if(!el)return;
-  if(state.projects.length===0){el.innerHTML=`<div style="font-size:12px;color:#444;padding:8px 0 12px">Añade un proyecto abajo.</div>`;return;}
-  el.innerHTML=state.projects.map(p=>`<div class="proj-list-item"><div class="proj-list-color" style="background:${p.color}"></div><div class="proj-list-name">${p.name}</div><button class="proj-del-btn" data-del-proj="${p.id}">🗑</button></div>`).join('');
-  document.querySelectorAll('[data-del-proj]').forEach(btn=>btn.addEventListener('click',()=>{state.projects=state.projects.filter(p=>p.id!==btn.dataset.delProj);save();renderProjList();render();}));
-};
-document.getElementById('btn-add-proj').addEventListener('click',()=>{ const name=document.getElementById('new-proj-name').value.trim(); const color=document.getElementById('new-proj-color').value; if(!name)return; state.projects.push({id:uid(),name,color}); document.getElementById('new-proj-name').value=''; save();renderProjList();render();populateImportSels(); });
+// ════════════════════════════════════════
+const renderProjList=()=>{const el=document.getElementById('proj-list');if(!el)return;if(!state.projects.length){el.innerHTML=`<div style="font-size:12px;color:#444;padding:8px 0 12px">Añade un proyecto abajo.</div>`;return;}el.innerHTML=state.projects.map(p=>`<div class="proj-list-item"><div class="proj-list-color" style="background:${p.color}"></div><div class="proj-list-name">${p.name}</div><button class="proj-del-btn" data-del-proj="${p.id}">🗑</button></div>`).join('');document.querySelectorAll('[data-del-proj]').forEach(btn=>btn.addEventListener('click',()=>{state.projects=state.projects.filter(p=>p.id!==btn.dataset.delProj);save();renderProjList();render();}));};
+document.getElementById('btn-add-proj').addEventListener('click',()=>{const name=document.getElementById('new-proj-name').value.trim();const color=document.getElementById('new-proj-color').value;if(!name)return;state.projects.push({id:uid(),name,color});document.getElementById('new-proj-name').value='';save();renderProjList();render();populateImportSels();});
 document.getElementById('new-proj-name').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn-add-proj').click();});
 
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
 //  IMPORT MODAL
-// ══════════════════════════════════════════════════
-const populateImportSels=()=>{ ['imp-proj-week','imp-proj-day'].forEach(id=>{const s=document.getElementById(id);if(!s)return;s.innerHTML=`<option value="">— Sin proyecto —</option>`+state.projects.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');}); };
-const populateWeekSel=()=>{ const sel=document.getElementById('imp-week-sel');if(!sel)return;sel.innerHTML='<option value="">— Selecciona —</option>';const today=new Date();let d=new Date('2025-01-01');d.setDate(d.getDate()-((d.getDay()+6)%7));const weeks=[];while(d<today){weeks.push(d.toISOString().split('T')[0]);d=new Date(d);d.setDate(d.getDate()+7);}weeks.reverse().forEach(wk=>{const o=document.createElement('option');o.value=wk;o.textContent=fmtWeek(wk);sel.appendChild(o);}); };
+// ════════════════════════════════════════
+const populateImportSels=()=>{['imp-proj-week','imp-proj-day'].forEach(id=>{const s=document.getElementById(id);if(!s)return;s.innerHTML=`<option value="">— Sin proyecto —</option>`+state.projects.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');});};
+const populateWeekSel=()=>{const sel=document.getElementById('imp-week-sel');if(!sel)return;sel.innerHTML='<option value="">— Selecciona —</option>';const today=new Date();let d=new Date('2025-01-01T12:00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));const weeks=[];while(d<today){weeks.push(d.toISOString().split('T')[0]);d=new Date(d);d.setDate(d.getDate()+7);}weeks.reverse().forEach(wk=>{const o=document.createElement('option');o.value=wk;o.textContent=fmtWeek(wk);sel.appendChild(o);});};
 const updWP=()=>{const h=parseInt(document.getElementById('imp-wh').value||0),m=parseInt(document.getElementById('imp-wm').value||0),t=h*60+m,p=document.getElementById('imp-week-preview');if(t>0){p.textContent=`= ${fmtDur(t)} · ~${fmtDur(Math.floor(t/5))}/día`;p.style.display='block';}else p.style.display='none';};
 const updDP=()=>{const date=document.getElementById('imp-day-date').value,it=document.getElementById('imp-day-in').value,ot=document.getElementById('imp-day-out').value,p=document.getElementById('imp-day-preview');if(date&&it&&ot){const m=Math.floor((new Date(`${date}T${ot}`)-new Date(`${date}T${it}`))/60000);if(m>0){p.textContent=`= ${fmtDur(m)} este día`;p.style.display='block';return;}}p.style.display='none';};
 document.getElementById('imp-wh').addEventListener('input',updWP);
@@ -679,25 +771,25 @@ document.getElementById('imp-wm').addEventListener('change',updWP);
 ['imp-day-date','imp-day-in','imp-day-out'].forEach(id=>document.getElementById(id).addEventListener('change',updDP));
 document.getElementById('imp-day-date').max=todayKey();
 const showFb=(type,msg)=>{['imp-err','imp-ok'].forEach(id=>{const e=document.getElementById(id);e.style.display='none';e.textContent='';});const el=document.getElementById(type==='err'?'imp-err':'imp-ok');el.textContent=msg;el.style.display='block';if(type==='ok')setTimeout(()=>el.style.display='none',5000);};
-document.getElementById('btn-imp-week').addEventListener('click',()=>{ const wk=document.getElementById('imp-week-sel').value,h=parseInt(document.getElementById('imp-wh').value||0),m=parseInt(document.getElementById('imp-wm').value||0);const pid=document.getElementById('imp-proj-week').value||null,note=document.getElementById('imp-week-note').value||'Importado';if(!wk){showFb('err','Selecciona una semana.');return;}const t=h*60+m;if(t<=0){showFb('err','Introduce horas > 0.');return;}const pd=Math.floor(t/5),rm=t%5;for(let i=0;i<5;i++){const d=new Date(wk);d.setDate(d.getDate()+i);const dk=d.toISOString().split('T')[0];const dm=pd+(i===0?rm:0);const it=new Date(`${dk}T09:00:00`);const ot=new Date(it.getTime()+dm*60000);if(!state.records[dk])state.records[dk]=[];state.records[dk].push({in:it.toISOString(),out:ot.toISOString(),projId:pid,note,imported:true});}save();render();document.getElementById('imp-wh').value='';document.getElementById('imp-wm').value='0';document.getElementById('imp-week-note').value='';document.getElementById('imp-week-preview').style.display='none';showFb('ok',`\u2713 ${fmtDur(t)} importadas \u2014 ${fmtWeek(wk)}`); });
-document.getElementById('btn-imp-day').addEventListener('click',()=>{ const date=document.getElementById('imp-day-date').value,it=document.getElementById('imp-day-in').value,ot=document.getElementById('imp-day-out').value;const pid=document.getElementById('imp-proj-day').value||null,note=document.getElementById('imp-day-note').value||'Importado';if(!date){showFb('err','Selecciona un día.');return;}const iISO=new Date(`${date}T${it}:00`),oISO=new Date(`${date}T${ot}:00`);if(oISO<=iISO){showFb('err','La salida debe ser posterior.');return;}const m=Math.floor((oISO-iISO)/60000);if(!state.records[date])state.records[date]=[];state.records[date].push({in:iISO.toISOString(),out:oISO.toISOString(),projId:pid,note,imported:true});save();render();document.getElementById('imp-day-in').value='09:00';document.getElementById('imp-day-out').value='17:00';document.getElementById('imp-day-note').value='';document.getElementById('imp-day-preview').style.display='none';const lbl=new Date(date+'T12:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});showFb('ok',`\u2713 ${fmtDur(m)} importadas el ${lbl}`); });
+document.getElementById('btn-imp-week').addEventListener('click',()=>{const wk=document.getElementById('imp-week-sel').value,h=parseInt(document.getElementById('imp-wh').value||0),m=parseInt(document.getElementById('imp-wm').value||0);const pid=document.getElementById('imp-proj-week').value||null,note=document.getElementById('imp-week-note').value||'Importado';if(!wk){showFb('err','Selecciona una semana.');return;}const t=h*60+m;if(t<=0){showFb('err','Introduce horas > 0.');return;}const pd=Math.floor(t/5),rm=t%5;const monDate=dateFromKey(wk);for(let i=0;i<5;i++){const d=new Date(monDate);d.setDate(monDate.getDate()+i);const dk=d.toISOString().split('T')[0];const dm=pd+(i===0?rm:0);const it=new Date(`${dk}T09:00:00`);const ot=new Date(it.getTime()+dm*60000);if(!state.records[dk])state.records[dk]=[];state.records[dk].push({in:it.toISOString(),out:ot.toISOString(),projId:pid,note,imported:true});}save();render();document.getElementById('imp-wh').value='';document.getElementById('imp-wm').value='0';document.getElementById('imp-week-note').value='';document.getElementById('imp-week-preview').style.display='none';showFb('ok',`\u2713 ${fmtDur(t)} importadas \u2014 ${fmtWeek(wk)}`);});
+document.getElementById('btn-imp-day').addEventListener('click',()=>{const date=document.getElementById('imp-day-date').value,it=document.getElementById('imp-day-in').value,ot=document.getElementById('imp-day-out').value;const pid=document.getElementById('imp-proj-day').value||null,note=document.getElementById('imp-day-note').value||'Importado';if(!date){showFb('err','Selecciona un día.');return;}const iISO=new Date(`${date}T${it}:00`),oISO=new Date(`${date}T${ot}:00`);if(oISO<=iISO){showFb('err','La salida debe ser posterior.');return;}const m=Math.floor((oISO-iISO)/60000);if(!state.records[date])state.records[date]=[];state.records[date].push({in:iISO.toISOString(),out:oISO.toISOString(),projId:pid,note,imported:true});save();render();document.getElementById('imp-day-in').value='09:00';document.getElementById('imp-day-out').value='17:00';document.getElementById('imp-day-note').value='';document.getElementById('imp-day-preview').style.display='none';const lbl=dateFromKey(date).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});showFb('ok',`\u2713 ${fmtDur(m)} importadas el ${lbl}`);});
 
-// ══════════════════════════════════════════════════
-//  MODALS WIRING
-// ══════════════════════════════════════════════════
-const openModal=id=>{ document.getElementById(id).classList.add('open'); if(id==='modal-projects')renderProjList(); if(id==='modal-import'){populateWeekSel();populateImportSels();} if(id==='modal-vac')renderVacModal(); };
+// ════════════════════════════════════════
+//  MODALS
+// ════════════════════════════════════════
+const openModal=id=>{document.getElementById(id).classList.add('open');if(id==='modal-projects')renderProjList();if(id==='modal-import'){populateWeekSel();populateImportSels();}if(id==='modal-vac')renderVacModal();};
 const closeModal=id=>document.getElementById(id).classList.remove('open');
 document.getElementById('btn-open-projects').addEventListener('click',()=>openModal('modal-projects'));
 document.getElementById('btn-open-vac').addEventListener('click',()=>openModal('modal-vac'));
 document.getElementById('btn-open-import').addEventListener('click',()=>openModal('modal-import'));
-document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click',()=>closeModal(btn.dataset.close)));
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
 document.querySelectorAll('.modal-overlay').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');}));
 document.querySelectorAll('.mode-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.mode-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const mode=btn.dataset.mode;document.getElementById('imp-form-week').className=`form-section${mode==='week'?' visible':''}`;document.getElementById('imp-form-day').className=`form-section${mode==='day'?' visible':''}`;['imp-err','imp-ok'].forEach(id=>document.getElementById(id).style.display='none');});});
 document.querySelectorAll('.tab').forEach(btn=>{btn.addEventListener('click',()=>{currentView=btn.dataset.view;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();});});
 
-// ══════════════════════════════════════════════════
-//  INSTALL BANNER
-// ══════════════════════════════════════════════════
+// ════════════════════════════════════════
+//  INSTALL
+// ════════════════════════════════════════
 let dp=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('install-banner').classList.add('show');});
 document.getElementById('btn-install').addEventListener('click',()=>{if(!dp)return;dp.prompt();dp.userChoice.then(()=>{dp=null;document.getElementById('install-banner').classList.remove('show');});});
