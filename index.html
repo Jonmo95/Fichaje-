@@ -405,11 +405,111 @@ const isWknd = dk => { const d=new Date(dk+'T12:00:00'); return d.getDay()===0||
 const isWorkday = dk => !isWknd(dk) && !isFest(dk);
 
 // ════════════════════════════════════════
-//  STATE
+//  STATE + FIREBASE SYNC
 // ════════════════════════════════════════
-let state = { records:{}, projects:[{id:'p0',name:'General',color:'#4ade80'}], vacations:[], prevYearVacDays:0 };
-try{ const s=JSON.parse(localStorage.getItem('fichav3')||localStorage.getItem('fichav2')||'null'); if(s&&s.records){ state.records=s.records; if(s.projects&&s.projects.length)state.projects=s.projects; if(s.vacations)state.vacations=s.vacations; if(s.prevYearVacDays)state.prevYearVacDays=s.prevYearVacDays; } }catch{}
-const save=()=>{ try{localStorage.setItem('fichav3',JSON.stringify(state));}catch{} };
+const EMPTY_STATE = {
+  records:{},
+  projects:[{id:'p0',name:'General',color:'#4ade80'}],
+  vacations:[],
+  prevYearVacDays:0
+};
+
+let state = JSON.parse(JSON.stringify(EMPTY_STATE));
+let currentUser = null;
+let suppressRemoteSave = false;
+let pendingSaveTimer = null;
+
+const localStateKey = 'fichav3';
+const legacyStateKey = 'fichav2';
+
+const loadLocalState = () => {
+  try{
+    const s = JSON.parse(localStorage.getItem(localStateKey) || localStorage.getItem(legacyStateKey) || 'null');
+    if(s && s.records){
+      state.records = s.records || {};
+      if(s.projects && s.projects.length) state.projects = s.projects;
+      if(s.vacations) state.vacations = s.vacations;
+      if(s.prevYearVacDays) state.prevYearVacDays = s.prevYearVacDays;
+    }
+  }catch{}
+};
+
+const persistLocalState = () => {
+  try{
+    localStorage.setItem(localStateKey, JSON.stringify(state));
+  }catch{}
+};
+
+loadLocalState();
+
+const userDocRef = (uid) => db.collection('users').doc(uid);
+
+const normalizeState = (raw) => ({
+  records: raw && raw.records ? raw.records : {},
+  projects: raw && Array.isArray(raw.projects) && raw.projects.length
+    ? raw.projects
+    : [{id:'p0',name:'General',color:'#4ade80'}],
+  vacations: raw && Array.isArray(raw.vacations) ? raw.vacations : [],
+  prevYearVacDays: raw && raw.prevYearVacDays ? parseInt(raw.prevYearVacDays) : 0
+});
+
+const loadCloudState = async (user) => {
+  const snap = await userDocRef(user.uid).get();
+
+  if(snap.exists){
+    state = normalizeState(snap.data());
+    persistLocalState();
+    render();
+    return;
+  }
+
+  const hasLocalData =
+    Object.keys(state.records || {}).length > 0 ||
+    (state.projects || []).length > 1 ||
+    (state.vacations || []).length > 0 ||
+    parseInt(state.prevYearVacDays || 0) > 0;
+
+  if(hasLocalData){
+    await userDocRef(user.uid).set({
+      ...state,
+      email: user.email || null,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }else{
+    state = JSON.parse(JSON.stringify(EMPTY_STATE));
+    await userDocRef(user.uid).set({
+      ...state,
+      email: user.email || null,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+
+  persistLocalState();
+  render();
+};
+
+const saveRemoteState = async () => {
+  if(!currentUser || suppressRemoteSave) return;
+
+  await userDocRef(currentUser.uid).set({
+    ...state,
+    email: currentUser.email || null,
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+  }, { merge:true });
+};
+
+const save = () => {
+  persistLocalState();
+
+  if(!currentUser) return;
+
+  clearTimeout(pendingSaveTimer);
+  pendingSaveTimer = setTimeout(() => {
+    saveRemoteState().catch(err => {
+      console.error('Error guardando en Firebase:', err);
+    });
+  }, 300);
+};
 
 // ════════════════════════════════════════
 //  HELPERS
