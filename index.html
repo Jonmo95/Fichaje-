@@ -510,7 +510,129 @@ const save = () => {
     });
   }, 300);
 };
+// ════════════════════════════════════════
+//  AUTH (LOGIN / REGISTER / LOGOUT)
+// ════════════════════════════════════════
+const authErrEl = () => document.getElementById('auth-err');
+const authOkEl = () => document.getElementById('auth-ok');
 
+const clearAuthMsgs = () => {
+  ['auth-err','auth-ok'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = 'none';
+    el.textContent = '';
+  });
+};
+
+const showAuthMsg = (type, msg) => {
+  clearAuthMsgs();
+  const el = document.getElementById(type === 'err' ? 'auth-err' : 'auth-ok');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+};
+
+const updateAuthButton = () => {
+  const btn = document.getElementById('btn-auth');
+  const logoutBtn = document.getElementById('btn-logout');
+  const sub = document.getElementById('auth-sub');
+
+  if (!btn) return;
+
+  if (currentUser) {
+    btn.textContent = currentUser.email || 'CUENTA';
+    btn.classList.add('logged');
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (sub) sub.textContent = `Sesión iniciada como ${currentUser.email}`;
+  } else {
+    btn.textContent = 'LOGIN';
+    btn.classList.remove('logged');
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (sub) sub.textContent = 'Inicia sesión para sincronizar tus fichajes';
+  }
+};
+
+const getAuthForm = () => ({
+  email: document.getElementById('auth-email').value.trim(),
+  password: document.getElementById('auth-password').value
+});
+
+const authErrorToText = (err) => {
+  const code = err?.code || '';
+  if (code.includes('invalid-email')) return 'Email no válido';
+  if (code.includes('missing-password')) return 'Introduce contraseña';
+  if (code.includes('weak-password')) return 'Mínimo 6 caracteres';
+  if (code.includes('email-already-in-use')) return 'Email ya registrado';
+  if (code.includes('user-not-found')) return 'Usuario no existe';
+  if (code.includes('wrong-password') || code.includes('invalid-credential')) return 'Credenciales incorrectas';
+  return 'Error de autenticación';
+};
+
+const registerUser = async () => {
+  const { email, password } = getAuthForm();
+  clearAuthMsgs();
+
+  if (!email || !password) {
+    showAuthMsg('err', 'Introduce email y contraseña');
+    return;
+  }
+
+  try {
+    await auth.createUserWithEmailAndPassword(email, password);
+    showAuthMsg('ok', 'Cuenta creada');
+  } catch (err) {
+    showAuthMsg('err', authErrorToText(err));
+  }
+};
+
+const loginUser = async () => {
+  const { email, password } = getAuthForm();
+  clearAuthMsgs();
+
+  if (!email || !password) {
+    showAuthMsg('err', 'Introduce email y contraseña');
+    return;
+  }
+
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+    showAuthMsg('ok', 'Sesión iniciada');
+    setTimeout(() => closeModal('modal-auth'), 500);
+  } catch (err) {
+    showAuthMsg('err', authErrorToText(err));
+  }
+};
+
+const logoutUser = async () => {
+  try {
+    await auth.signOut();
+  } catch (err) {
+    showAuthMsg('err', 'Error al cerrar sesión');
+  }
+};
+
+// Detecta login automático
+auth.onAuthStateChanged(async (user) => {
+  currentUser = user || null;
+  updateAuthButton();
+
+  if (!currentUser) {
+    loadLocalState();
+    render();
+    return;
+  }
+
+  try {
+    suppressRemoteSave = true;
+    await loadCloudState(currentUser);
+  } catch (err) {
+    console.error(err);
+    showAuthMsg('err', 'Error cargando datos');
+  } finally {
+    suppressRemoteSave = false;
+  }
+});
 // ════════════════════════════════════════
 //  HELPERS
 // ════════════════════════════════════════
@@ -939,6 +1061,18 @@ const closeModal=id=>document.getElementById(id).classList.remove('open');
 document.getElementById('btn-open-projects').addEventListener('click',()=>openModal('modal-projects'));
 document.getElementById('btn-open-vac').addEventListener('click',()=>openModal('modal-vac'));
 document.getElementById('btn-open-import').addEventListener('click',()=>openModal('modal-import'));
+  document.getElementById('btn-auth').addEventListener('click', () => {
+  clearAuthMsgs();
+  openModal('modal-auth');
+});
+
+document.getElementById('btn-login').addEventListener('click', loginUser);
+document.getElementById('btn-register').addEventListener('click', registerUser);
+document.getElementById('btn-logout').addEventListener('click', logoutUser);
+
+document.getElementById('auth-password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') loginUser();
+});
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
 document.querySelectorAll('.modal-overlay').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');}));
 document.querySelectorAll('.mode-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.mode-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const mode=btn.dataset.mode;document.getElementById('imp-form-week').className=`form-section${mode==='week'?' visible':''}`;document.getElementById('imp-form-day').className=`form-section${mode==='day'?' visible':''}`;['imp-err','imp-ok'].forEach(id=>document.getElementById(id).style.display='none');});});
