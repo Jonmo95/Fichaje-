@@ -209,12 +209,13 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
   <div class="hdr-row">
     <div class="logo-wrap"><div class="logo-dot" id="logo-dot"></div><span class="app-title">FICHA+</span></div>
     <div class="hdr-right">
-      <span id="clock">--:--:--</span>
-      <button class="hdr-btn" id="btn-open-projects">⚙ PROY</button>
-      <button class="hdr-btn blue" id="btn-open-vac">🏖 VAC</button>
-      <button class="hdr-btn green" id="btn-open-import">⬆ IMP</button>
-      <button class="hdr-btn amber" id="btn-export-excel">📊 XLS</button>
-    </div>
+  <span id="clock">--:--:--</span>
+  <button class="hdr-btn" id="btn-auth">LOGIN</button>
+  <button class="hdr-btn" id="btn-open-projects">⚙ PROY</button>
+  <button class="hdr-btn blue" id="btn-open-vac">🏖 VAC</button>
+  <button class="hdr-btn green" id="btn-open-import">⬆ IMP</button>
+  <button class="hdr-btn amber" id="btn-export-excel">📊 XLS</button>
+</div>
   </div>
 </header>
 <nav>
@@ -317,6 +318,39 @@ main{position:relative;z-index:10;padding:14px 14px 80px;max-width:520px;margin:
   <div class="feedback ok" id="imp-ok"></div>
   <div class="modal-tip">💡 Puedes importar varias entradas sin cerrar el panel. Los registros importados se marcan con ↑.</div>
 </div>
+</div>
+
+  <div class="modal-overlay" id="modal-auth">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-title">ACCESO</div>
+        <div class="modal-sub" id="auth-sub">Inicia sesión para sincronizar tus fichajes</div>
+      </div>
+      <button class="close-btn" data-close="modal-auth">×</button>
+    </div>
+
+    <div class="field">
+      <label class="lbl" for="auth-email">EMAIL</label>
+      <input class="inp" id="auth-email" type="email" placeholder="tu@email.com">
+    </div>
+
+    <div class="field">
+      <label class="lbl" for="auth-password">CONTRASEÑA</label>
+      <input class="inp" id="auth-password" type="password" placeholder="••••••••">
+    </div>
+
+    <button class="action-btn" id="btn-login">INICIAR SESIÓN</button>
+    <button class="action-btn blue-btn" id="btn-register" style="margin-top:8px">CREAR CUENTA</button>
+    <button class="action-btn amber-btn" id="btn-logout" style="margin-top:8px;display:none">CERRAR SESIÓN</button>
+
+    <div class="feedback err" id="auth-err" style="display:none"></div>
+    <div class="feedback ok" id="auth-ok" style="display:none"></div>
+
+    <div class="modal-tip">
+      Al iniciar sesión, tus registros se guardarán en tu cuenta y podrás verlos desde cualquier dispositivo.
+    </div>
+  </div>
 </div>
 
 <div id="install-banner">
